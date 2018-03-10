@@ -4,6 +4,8 @@
     <bytecodeTargetLevel>
       <module name="burgemeester-bot_main" target="1.8" />
       <module name="burgemeester-bot_test" target="1.8" />
+      <module name="language-util_main" target="1.8" />
+      <module name="language-util_test" target="1.8" />
       <module name="wikihow_main" target="1.8" />
       <module name="wikihow_test" target="1.8" />
     </bytecodeTargetLevel>

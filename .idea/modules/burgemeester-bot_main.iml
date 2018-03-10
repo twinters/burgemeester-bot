@@ -11,5 +11,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Gradle: org.jsoup:jsoup:1.9.2" level="project" />
     <orderEntry type="module" module-name="wikihow_main" />
+    <orderEntry type="module" module-name="language-util_main" />
   </component>
 </module>
