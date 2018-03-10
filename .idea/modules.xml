@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/burgemeester-bot.iml" filepath="$PROJECT_DIR$/.idea/modules/burgemeester-bot.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/burgemeester-bot_main.iml" filepath="$PROJECT_DIR$/.idea/modules/burgemeester-bot_main.iml" group="burgemeester-bot" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/burgemeester-bot_test.iml" filepath="$PROJECT_DIR$/.idea/modules/burgemeester-bot_test.iml" group="burgemeester-bot" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wikihow.iml" filepath="$PROJECT_DIR$/.idea/modules/wikihow.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/wikihow-scraper.iml" filepath="$PROJECT_DIR$/.idea/modules/wikihow-scraper.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/wikihow_main.iml" filepath="$PROJECT_DIR$/.idea/modules/wikihow_main.iml" group="wikihow" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/wikihow_test.iml" filepath="$PROJECT_DIR$/.idea/modules/wikihow_test.iml" group="wikihow" />
