@@ -6,6 +6,10 @@
       <module name="burgemeester-bot_test" target="1.8" />
       <module name="language-util_main" target="1.8" />
       <module name="language-util_test" target="1.8" />
+      <module name="Repositories-wikihow-scraper_main" target="1.8" />
+      <module name="Repositories-wikihow-scraper_test" target="1.8" />
+      <module name="wikihow-scraper_main" target="1.8" />
+      <module name="wikihow-scraper_test" target="1.8" />
       <module name="wikihow_main" target="1.8" />
       <module name="wikihow_test" target="1.8" />
     </bytecodeTargetLevel>
