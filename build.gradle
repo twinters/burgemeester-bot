@@ -13,8 +13,6 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile 'org.jsoup:jsoup:1.9.2'
-    compile 'org.languagetool:language-nl:3.4'
     compile project(':language-util')
     compile project(':wikihow-scraper')
 }
