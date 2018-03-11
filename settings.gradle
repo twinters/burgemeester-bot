@@ -1,1 +1,5 @@
+include ':language-util'
+project(':language-util').projectDir = new File(settingsDir, '../language-util')
+include ':wikihow-scraper'
+project(':wikihow-scraper').projectDir = new File(settingsDir, '../wikihow-scraper')
 rootProject.name = 'burgemeester-bot'
