@@ -63,7 +63,7 @@ public class BurgemeesterBot {
 
     public String createRandomToespraak() throws IOException {
         String action = getRandomAction();
-        return "Aan allen die " + action + ": proficiat.\nAan allen die " + negateAction(action) + ": ook profiat.";
+        return "Aan allen die " + action + ": proficiat.\nAan allen die " + negateAction(action) + ": ook proficiat.";
     }
 
 
