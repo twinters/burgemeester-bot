@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../language-util" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../wikihow-scraper" vcs="Git" />
   </component>
 </project>
