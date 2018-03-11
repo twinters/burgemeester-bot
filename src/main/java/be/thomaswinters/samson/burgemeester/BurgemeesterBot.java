@@ -37,8 +37,6 @@ public class BurgemeesterBot {
 
     private String replaceSubject(String input) throws IOException {
         return subjectReplacer.replaceSecondPerson(input, "zij", "hun", "hen", "zichzelf", SubjectType.THIRD_SINGULAR);
-
-
     }
 
     private boolean isValidAction(String title) {
