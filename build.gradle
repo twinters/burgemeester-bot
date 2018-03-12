@@ -21,7 +21,7 @@ dependencies {
 }
 
 heroku {
-    appName = "desolate-atoll-69221"
+    appName = "burgemeester-bot"
     processTypes(
             worker: "java -jar build/libs/burgemeester-bot-0.0.1.jar"
     )
