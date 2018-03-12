@@ -3,8 +3,8 @@ package be.thomaswinters.samson.burgemeester;
 import be.thomaswinters.language.SubjectType;
 import be.thomaswinters.language.dutch.DutchActionNegator;
 import be.thomaswinters.language.dutch.DutchSentenceSubjectReplacer;
+import be.thomaswinters.language.stringmorpher.Decapitaliser;
 import be.thomaswinters.wikihow.WikiHowPageScraper;
-import stringmorpher.Decapitaliser;
 
 import java.io.IOException;
 import java.util.Optional;

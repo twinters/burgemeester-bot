@@ -31,7 +31,10 @@ heroku {
 jar {
     manifest {
         attributes(
-                'Main-Class': 'be.thomaswinters.samson.burgemeester.BurgemeesterBot'
+                'Main-Class': 'be.thomaswinters.samson.burgemeester.BurgemeesterBot',
+                'Class-Path': configurations.runtime.files.collect { "lib/$it.name" }.join(' '),
+                'Implementation-Version': version
         )
     }
+    from(configurations.compile.collect { it.isDirectory() ? it : zipTree(it) })
 }
