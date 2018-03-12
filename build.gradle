@@ -2,11 +2,7 @@ plugins {
     id "com.heroku.sdk.heroku-gradle" version "1.0.1"
 }
 
-group 'be.thomaswinters.samson'
-version '0.0.1'
-
 apply plugin: 'java'
-apply plugin: 'idea'
 
 sourceCompatibility = 1.8
 
@@ -23,17 +19,14 @@ dependencies {
 heroku {
     appName = "burgemeester-bot"
     processTypes(
-            worker: "java -jar build/libs/burgemeester-bot-0.0.1.jar"
+            worker: "java -jar build/libs/burgemeester-bot.jar"
     )
-//    includes = ["build/libs/burgemeester-bot-0.0.1.jar"]
 }
 
 jar {
     manifest {
         attributes(
                 'Main-Class': 'be.thomaswinters.samson.burgemeester.BurgemeesterBot',
-                'Class-Path': configurations.runtime.files.collect { "lib/$it.name" }.join(' '),
-                'Implementation-Version': version
         )
     }
     from(configurations.compile.collect { it.isDirectory() ? it : zipTree(it) })
