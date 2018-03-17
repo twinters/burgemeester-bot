@@ -2,4 +2,6 @@ include ':language-util'
 project(':language-util').projectDir = new File(settingsDir, '../language-util')
 include ':wikihow-scraper'
 project(':wikihow-scraper').projectDir = new File(settingsDir, '../wikihow-scraper')
+include ':twitter-util'
+project(':twitter-util').projectDir = new File(settingsDir, '../twitter-util')
 rootProject.name = 'burgemeester-bot'

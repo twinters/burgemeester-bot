@@ -72,6 +72,7 @@ public class BurgemeesterBot {
             System.out.println(new BurgemeesterBot().createRandomToespraak() + "\n\n");
 
         }
+
     }
 
 }
