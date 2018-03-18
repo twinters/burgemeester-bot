@@ -1,15 +1,19 @@
 package be.thomaswinters.samson.burgemeester;
 
+import be.thomaswinters.bot.ITextGeneratorBot;
 import be.thomaswinters.language.SubjectType;
 import be.thomaswinters.language.dutch.DutchActionNegator;
 import be.thomaswinters.language.dutch.DutchSentenceSubjectReplacer;
 import be.thomaswinters.language.stringmorpher.Decapitaliser;
+import be.thomaswinters.twitter.bot.TwitterBot;
+import be.thomaswinters.twitter.bot.TwitterBotExecutor;
 import be.thomaswinters.wikihow.WikiHowPageScraper;
+import twitter4j.TwitterException;
 
 import java.io.IOException;
 import java.util.Optional;
 
-public class BurgemeesterBot {
+public class BurgemeesterBot implements ITextGeneratorBot {
 
     private WikiHowPageScraper wikiHow = new WikiHowPageScraper();
     private DutchSentenceSubjectReplacer subjectReplacer = new DutchSentenceSubjectReplacer();
@@ -66,13 +70,20 @@ public class BurgemeesterBot {
         return "Aan allen die " + action + ": proficiat.\nAan allen die " + negateAction(action) + ": ook proficiat.";
     }
 
-
-    public static void main(String[] args) throws IOException {
-        for (int i = 0; i < 10; i++) {
-            System.out.println(new BurgemeesterBot().createRandomToespraak() + "\n\n");
-
+    @Override
+    public Optional<String> generateText() {
+        try {
+            return Optional.of(createRandomToespraak());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
+        return Optional.empty();
     }
+
+    public static void main(String[] args) throws IOException, TwitterException {
+        TwitterBot bot = new TwitterBot(new BurgemeesterBot());
+        new TwitterBotExecutor(bot).run(args);
+    }
+
 
 }

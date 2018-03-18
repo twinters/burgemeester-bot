@@ -20,7 +20,7 @@ dependencies {
 heroku {
     appName = "burgemeester-bot"
     processTypes(
-            worker: "java -jar build/libs/burgemeester-bot.jar"
+            worker: "java -jar build/libs/burgemeester-bot.jar -mode post"
     )
 }
 
