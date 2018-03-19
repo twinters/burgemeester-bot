@@ -14,6 +14,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-428717100/wikihow-scraper.iml" filepath="$PROJECT_DIR$/.idea/modules/-428717100/wikihow-scraper.iml" group="wikihow-scraper" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-428717100/wikihow-scraper_main.iml" filepath="$PROJECT_DIR$/.idea/modules/-428717100/wikihow-scraper_main.iml" group="wikihow-scraper" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-428717100/wikihow-scraper_test.iml" filepath="$PROJECT_DIR$/.idea/modules/-428717100/wikihow-scraper_test.iml" group="wikihow-scraper" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper.iml" filepath="$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper.iml" group="wiktionary-nl-scraper" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper_main.iml" filepath="$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper_main.iml" group="wiktionary-nl-scraper" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper_test.iml" filepath="$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper_test.iml" group="wiktionary-nl-scraper" />
     </modules>
   </component>
 </project>

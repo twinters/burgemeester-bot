@@ -5,10 +5,12 @@ import be.thomaswinters.language.SubjectType;
 import be.thomaswinters.language.dutch.DutchActionNegator;
 import be.thomaswinters.language.dutch.DutchSentenceSubjectReplacer;
 import be.thomaswinters.language.stringmorpher.Decapitaliser;
+import be.thomaswinters.twitter.GeneratorTwitterBot;
 import be.thomaswinters.twitter.bot.TwitterBot;
 import be.thomaswinters.twitter.bot.TwitterBotExecutor;
 import be.thomaswinters.wikihow.WikiHowPageScraper;
 import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -44,7 +46,7 @@ public class BurgemeesterBot implements ITextGeneratorBot {
     }
 
     private boolean isValidAction(String title) {
-        return !containsCapitalisedLetters(title);
+        return !containsCapitalisedLetters(title) && !title.startsWith("tips");
     }
 
     private boolean containsCapitalisedLetters(String input) {
@@ -81,7 +83,7 @@ public class BurgemeesterBot implements ITextGeneratorBot {
     }
 
     public static void main(String[] args) throws IOException, TwitterException {
-        TwitterBot bot = new TwitterBot(new BurgemeesterBot());
+        TwitterBot bot = new GeneratorTwitterBot(TwitterFactory.getSingleton(), new BurgemeesterBot());
         new TwitterBotExecutor(bot).run(args);
     }
 
