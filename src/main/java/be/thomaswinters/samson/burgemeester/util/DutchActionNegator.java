@@ -11,6 +11,7 @@ import org.languagetool.language.Dutch;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
@@ -28,17 +29,16 @@ public class DutchActionNegator {
         this(createDefaultRules());
     }
 
+    private static final List<String> prohibitedAntonymWords = Arrays.asList("die", "heel", "met");
+
     private static NegatorRule createDefaultRules() {
         ILanguageTool languageTool = new CachedLanguageTool(new JLanguageToolAdaptor(new JLanguageTool(new Dutch())));
         WiktionaryPageScraper wiktionaryScraper = new WiktionaryPageScraper("nl");
         Language dutch = new Language("Nederlands");
 
         return new CascadeNegatorRule(Arrays.asList(
-                new AntonymReplacer(wiktionaryScraper, dutch),
-                new WordReplacerRule(languageTool, "zonder", "met"),
-                new WordReplacerRule(languageTool, "met", "zonder", Arrays.asList("omgaan")),
-                new WordReplacerRule(languageTool, "in", "buiten"),
-                new WordReplacerRule(languageTool, "uit", "binnen"),
+                new ReplacerFilterNegator(new AntonymReplacer(wiktionaryScraper, dutch), prohibitedAntonymWords),
+                new WordOccurrenceFilterNegator(new WordReplacerRule("met", "zonder"), Arrays.asList("omgaan")),
                 new FirstWordReplacerRule(languageTool, "een", "geen"),
                 new FirstWordReplacerRule(languageTool, "hun", "iemand anders zijn"),
                 new ErNietRule(languageTool),

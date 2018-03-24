@@ -1,7 +1,7 @@
 u1 = u{2,3}
 u2 = u{1,2}
 
-ahem = Ah<u1:e>m. Ah<u1:e><u2>m. Ahum.
+ahem = Ahe<u1:1>m. Ahe<u1:1><u2>m. Aheum.
 
 main = {
 	<ahem>

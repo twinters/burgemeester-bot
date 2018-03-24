@@ -1,8 +1,8 @@
 package be.thomaswinters.samson.burgemeester.util;
 
+import be.thomaswinters.language.dutch.negator.AReplacerNegator;
 import be.thomaswinters.language.dutch.negator.NegatorRule;
 import be.thomaswinters.replacement.Replacer;
-import be.thomaswinters.textgeneration.domain.util.Picker;
 import be.thomaswinters.wiktionarynl.data.IWiktionaryWord;
 import be.thomaswinters.wiktionarynl.data.Language;
 import be.thomaswinters.wiktionarynl.data.WiktionaryPage;
@@ -11,13 +11,12 @@ import be.thomaswinters.wiktionarynl.scraper.WiktionaryPageScraper;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class AntonymReplacer implements NegatorRule {
+public class AntonymReplacer extends AReplacerNegator implements NegatorRule {
     private final Random random = new Random();
 
     private final WiktionaryPageScraper scraper;
@@ -28,24 +27,8 @@ public class AntonymReplacer implements NegatorRule {
         this.language = language;
     }
 
-    @Override
-    public Optional<String> negateAction(String input) throws IOException, ExecutionException {
 
-        List<Replacer> antonymReplacers = getPossibleReplacers(input);
-
-        if (!antonymReplacers.isEmpty()) {
-            System.out.println("-- Possible antonyms: " + antonymReplacers);
-            Replacer chosenReplacer = Picker.pick(antonymReplacers);
-            String output = chosenReplacer.replace(input);
-            if (!output.equals(input)) {
-                System.out.println("-- Antonym");
-                return Optional.of(output);
-            }
-        }
-        return Optional.empty();
-    }
-
-    private List<Replacer> getPossibleReplacers(String input) {
+    protected List<Replacer> getPossibleReplacers(String input) {
         return getWords(input).stream()
                 .flatMap(word -> {
                     try {
