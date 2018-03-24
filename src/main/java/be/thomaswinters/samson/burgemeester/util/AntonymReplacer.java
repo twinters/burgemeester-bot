@@ -60,7 +60,7 @@ public class AntonymReplacer implements NegatorRule {
     private List<String> getWords(String input) {
 
         return Stream.of(input.split(" "))
-                .map(word -> word.replaceAll("\\W", ""))
+                .map(word -> word.replaceAll("\\P{L}", ""))
                 .collect(Collectors.toList());
 
 
