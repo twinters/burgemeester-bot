@@ -2,6 +2,8 @@ include ':language-util'
 project(':language-util').projectDir = new File(settingsDir, '../language-util')
 include ':twitter-util'
 project(':twitter-util').projectDir = new File(settingsDir, '../twitter-util')
+include ':text-util'
+project(':text-util').projectDir = new File(settingsDir, '../text-util')
 include ':words'
 project(':words').projectDir = new File(settingsDir, '../words')
 include ':wikihow-scraper'

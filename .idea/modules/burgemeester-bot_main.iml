@@ -11,6 +11,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="language-util_main" />
     <orderEntry type="module" module-name="twitter-util_main" />
+    <orderEntry type="module" module-name="text-util_main" />
     <orderEntry type="module" module-name="wikihow-scraper_main" />
     <orderEntry type="module" module-name="wiktionary-nl-scraper_main" />
     <orderEntry type="module" module-name="words_main" />

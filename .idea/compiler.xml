@@ -8,6 +8,8 @@
       <module name="language-util_test" target="1.8" />
       <module name="Repositories-wikihow-scraper_main" target="1.8" />
       <module name="Repositories-wikihow-scraper_test" target="1.8" />
+      <module name="text-util_main" target="1.8" />
+      <module name="text-util_test" target="1.8" />
       <module name="twitter-util_main" target="1.8" />
       <module name="twitter-util_test" target="1.8" />
       <module name="wikihow-scraper_main" target="1.8" />

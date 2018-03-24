@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../language-util" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../text-util" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../twitter-util" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../wikihow-scraper" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../wiktionary-nl-scraper" vcs="Git" />
