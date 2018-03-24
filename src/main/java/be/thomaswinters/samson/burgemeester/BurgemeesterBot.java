@@ -5,6 +5,12 @@ import be.thomaswinters.language.SubjectType;
 import be.thomaswinters.language.dutch.DutchSentenceSubjectReplacer;
 import be.thomaswinters.language.stringmorpher.Decapitaliser;
 import be.thomaswinters.samson.burgemeester.util.DutchActionNegator;
+import be.thomaswinters.textgeneration.domain.constraints.LockConstraint;
+import be.thomaswinters.textgeneration.domain.context.ITextGeneratorContext;
+import be.thomaswinters.textgeneration.domain.context.TextGeneratorContext;
+import be.thomaswinters.textgeneration.domain.generators.ITextGenerator;
+import be.thomaswinters.textgeneration.domain.generators.StaticTextGenerator;
+import be.thomaswinters.textgeneration.domain.generators.named.NamedGeneratorRegister;
 import be.thomaswinters.twitter.GeneratorTwitterBot;
 import be.thomaswinters.twitter.bot.TwitterBot;
 import be.thomaswinters.twitter.bot.TwitterBotExecutor;
@@ -13,14 +19,20 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class BurgemeesterBot implements ITextGeneratorBot {
 
+
     private WikiHowPageScraper wikiHow = new WikiHowPageScraper();
     private DutchSentenceSubjectReplacer subjectReplacer = new DutchSentenceSubjectReplacer();
     private DutchActionNegator negator = new DutchActionNegator();
+    private final ITextGenerator toespraakGenerator;
 
+    public BurgemeesterBot(ITextGenerator toespraakGenerator) {
+        this.toespraakGenerator = toespraakGenerator;
+    }
 
     private String getRandomAction() throws IOException {
         String randomAction = null;
@@ -54,22 +66,20 @@ public class BurgemeesterBot implements ITextGeneratorBot {
 
     }
 
-    private String negateAction(String input) {
-        try {
-            Optional<String> result = negator.negateAction(input);
-            if (result.isPresent()) {
-                return result.get();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        throw new RuntimeException("No negation of '" + input + "' found!");
-    }
 
+    public ITextGeneratorContext createGenerationContext(String action) {
+        NamedGeneratorRegister register = new NamedGeneratorRegister();
+        register.createGenerator("actie", new StaticTextGenerator(action));
+        return new TextGeneratorContext(new ArrayList<LockConstraint>(), register, true);
+    }
 
     public String createRandomToespraak() throws IOException {
         String action = getRandomAction();
-        return "Aan allen die " + action + ": proficiat.\nAan allen die " + negateAction(action) + ": ook proficiat.";
+
+
+        return toespraakGenerator.generate(createGenerationContext(getRandomAction()));
+
+//        return "Aan allen die " + action + ": proficiat.\nAan allen die " + negateAction(action) + ": ook proficiat.";
     }
 
     @Override
@@ -83,7 +93,7 @@ public class BurgemeesterBot implements ITextGeneratorBot {
     }
 
     public static void main(String[] args) throws IOException, TwitterException {
-        TwitterBot bot = new GeneratorTwitterBot(TwitterFactory.getSingleton(), new BurgemeesterBot());
+        TwitterBot bot = new GeneratorTwitterBot(TwitterFactory.getSingleton(), new BurgemeesterBotLoader().build());
         new TwitterBotExecutor(bot).run(args);
     }
 

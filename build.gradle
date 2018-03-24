@@ -16,6 +16,7 @@ dependencies {
     compile project(':twitter-util')
     compile project(':wikihow-scraper')
     compile project(':wiktionary-nl-scraper')
+    compile project(':words')
 }
 
 heroku {

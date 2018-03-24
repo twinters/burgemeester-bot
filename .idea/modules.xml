@@ -17,6 +17,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper.iml" filepath="$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper.iml" group="wiktionary-nl-scraper" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper_main.iml" filepath="$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper_main.iml" group="wiktionary-nl-scraper" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper_test.iml" filepath="$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper_test.iml" group="wiktionary-nl-scraper" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1150697428/words.iml" filepath="$PROJECT_DIR$/.idea/modules/-1150697428/words.iml" group="words" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1150697428/words_main.iml" filepath="$PROJECT_DIR$/.idea/modules/-1150697428/words_main.iml" group="words" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1150697428/words_test.iml" filepath="$PROJECT_DIR$/.idea/modules/-1150697428/words_test.iml" group="words" />
     </modules>
   </component>
 </project>

@@ -50,4 +50,5 @@ public class DutchActionNegator {
     public Optional<String> negateAction(String input) throws IOException, ExecutionException {
         return rule.negateAction(input);
     }
+
 }
