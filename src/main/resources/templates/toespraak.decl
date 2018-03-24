@@ -1,13 +1,7 @@
-u = u{2,4}
-e_grave = è{2,4}
-e = e{2,4}
+u1 = u{2,3}
+u2 = u{1,2}
 
-ahem = {
-	1: Ahe<u:1>m. Ahe<u:1><u>m. Aheum.
-	1: Ahè<e_grave:1>m. Ahè<e_grave:1><e_grave>m. Ahem.
-	1: Ahe<e:1>m. Ahe<e:1><e>m. Ahem.
-}
-
+ahem = Ah<u1:e>m. Ah<u1:e><u2>m. Ahum.
 
 main = {
 	<ahem>
