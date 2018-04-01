@@ -22,6 +22,7 @@ import be.thomaswinters.wikihow.WikiHowPageScraper;
 import be.thomaswinters.wikihow.WikihowLoginCookieCreator;
 import be.thomaswinters.wikihow.WikihowSearcher;
 import be.thomaswinters.wikihow.data.PageCard;
+import org.jsoup.HttpStatusException;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 
@@ -87,6 +88,8 @@ public class BurgemeesterBot implements ITextGeneratorBot, IChatBot {
         while (pages.isEmpty() && !searchWords.isEmpty()) {
             try {
                 pages = wikiHowSearcher.search(searchWords);
+            } catch (HttpStatusException e) {
+                System.out.println("Couldn't find anything for " + searchWords);
             } catch (IOException e) {
                 e.printStackTrace();
             }
