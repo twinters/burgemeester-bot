@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
 public class BurgemeesterBot implements ITextGeneratorBot, IChatBot {
@@ -74,22 +75,42 @@ public class BurgemeesterBot implements ITextGeneratorBot, IChatBot {
     }
 
     private Optional<String> getActionRelevantTo(String message) {
-        String searchQuery = SentenceUtil.splitOnSpaces(message)
+        List<String> searchWords = SentenceUtil.splitOnSpaces(message)
                 .filter(e -> !TwitterUtil.isTwitterWord(e))
-                .map(e -> SentenceUtil.removePunctuations(e))
+                .map(SentenceUtil::removePunctuations)
                 .filter(SentenceUtil::hasOnlyLetters)
-                .collect(Collectors.joining(" "));
+                .collect(Collectors.toList());
 
-        System.out.println("Searching on WikiHow for: " + searchQuery);
+        System.out.println("Searching on WikiHow for: " + searchWords);
 
-        List<PageCard> pages = null;
-        try {
-            pages = wikiHowSearcher.search(searchQuery);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return Optional.empty();
+        List<PageCard> pages = new ArrayList<>();
+        while (pages.isEmpty() && !searchWords.isEmpty()) {
+            try {
+                pages = wikiHowSearcher.search(searchWords);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (pages.isEmpty()) {
+                searchWords = removeShortestWords(searchWords);
+            }
         }
 
+        return getFirstAction(pages);
+    }
+
+    private List<String> removeShortestWords(List<String> searchWords) {
+        OptionalInt lowestAmountOfLetters = searchWords.stream().mapToInt(String::length).min();
+        if (lowestAmountOfLetters.isPresent()) {
+            searchWords = searchWords.stream()
+                    .filter(e -> e.length() > lowestAmountOfLetters.getAsInt())
+                    .collect(Collectors.toList());
+        }
+        return searchWords;
+
+
+    }
+
+    private Optional<String> getFirstAction(List<PageCard> pages) {
         return pages.stream()
                 .map(PageCard::getTitle)
                 .map(Decapitaliser::decapitaliseFirstLetter)
@@ -163,13 +184,18 @@ public class BurgemeesterBot implements ITextGeneratorBot, IChatBot {
     @Override
     public Optional<String> generateReply(IChatMessage message) {
         try {
+
+
             Optional<String> relevantAction = getActionRelevantTo(message.getMessage());
 
             if (relevantAction.isPresent()) {
                 return Optional.of(createToespraak(relevantAction.get()));
             }
 
-        } catch (IOException e) {
+        } catch (
+                IOException e)
+
+        {
             e.printStackTrace();
         }
         return Optional.empty();
