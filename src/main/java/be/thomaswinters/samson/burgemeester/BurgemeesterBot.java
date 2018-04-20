@@ -2,6 +2,9 @@ package be.thomaswinters.samson.burgemeester;
 
 import be.thomaswinters.bot.IChatBot;
 import be.thomaswinters.bot.data.IChatMessage;
+import be.thomaswinters.generator.generators.IGenerator;
+import be.thomaswinters.generator.generators.SelectionGenerator;
+import be.thomaswinters.generator.selection.RouletteWheelSelection;
 import be.thomaswinters.language.SubjectType;
 import be.thomaswinters.language.dutch.DutchSentenceSubjectReplacer;
 import be.thomaswinters.language.stringmorpher.Decapitaliser;
@@ -41,10 +44,20 @@ public class BurgemeesterBot implements IStringGenerator, IChatBot {
 
     private DutchSentenceSubjectReplacer subjectReplacer = new DutchSentenceSubjectReplacer();
     private DutchActionNegator negator = new DutchActionNegator();
-    private final ITextGenerator toespraakGenerator;
+    private final ITextGenerator toespraakTemplatedGenerator;
+
+    private final IGenerator<String> tweetGenerator =
+            new SelectionGenerator<String>(
+                    this::createRandomToespraak,
+                    new RouletteWheelSelection<>(
+                            this::getToespraakFitness
+                    ),
+                    8
+            );
+
 
     public BurgemeesterBot(ITextGenerator toespraakGenerator) {
-        this.toespraakGenerator = toespraakGenerator;
+        this.toespraakTemplatedGenerator = toespraakGenerator;
 
         this.wikiHowSearcher = createWikihowSearcher();
     }
@@ -159,11 +172,11 @@ public class BurgemeesterBot implements IStringGenerator, IChatBot {
     }
 
     public String createToespraak(String action) throws IOException {
-        return toespraakGenerator.generate(createGenerationContext(action));
+        return toespraakTemplatedGenerator.generate(createGenerationContext(action));
     }
 
-    @Override
-    public Optional<String> generateText() {
+
+    public Optional<String> createRandomToespraak() {
         try {
             return Optional.of(createToespraak(getRandomAction()));
         } catch (IOException e) {
@@ -172,9 +185,22 @@ public class BurgemeesterBot implements IStringGenerator, IChatBot {
         return Optional.empty();
     }
 
+    private double getToespraakFitness(String e) {
+        if (e.contains("niet") || e.contains("geen")) {
+            return 1d;
+        }
+        return 20d;
+
+    }
+
 
     @Override
+    public Optional<String> generateText() {
+        return tweetGenerator.generate();
+    }
 
+
+    @Override
     public Optional<String> generateReply(IChatMessage message) {
         try {
             Optional<String> relevantAction = getActionRelevantTo(message.getMessage());
