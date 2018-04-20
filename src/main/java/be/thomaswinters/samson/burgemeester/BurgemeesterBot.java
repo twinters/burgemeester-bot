@@ -128,23 +128,16 @@ public class BurgemeesterBot implements IStringGenerator, IChatBot {
     }
 
     private String fixAction(String randomAction) throws IOException {
-        return replaceSubject(removeBetweenBrackets(randomAction));
+        return replaceSubject(SentenceUtil.removeBetweenBrackets(randomAction));
     }
 
-    private String removeBetweenBrackets(String input) {
-        return input.replaceAll("\\s*\\([^\\)]*\\)\\s*", " ");
-    }
 
     private String replaceSubject(String input) throws IOException {
         return subjectReplacer.replaceSecondPerson(input, "zij", "hun", "hen", "zichzelf", SubjectType.THIRD_SINGULAR);
     }
 
     private boolean isValidAction(String title) {
-        return !containsCapitalisedLetters(title) && !title.startsWith("tips");
-    }
-
-    private boolean containsCapitalisedLetters(String input) {
-        return !input.toLowerCase().equals(input);
+        return !SentenceUtil.containsCapitalisedLetters(title) && !title.startsWith("tips");
     }
 
 
