@@ -13,6 +13,7 @@
     <orderEntry type="module" module-name="language-util_main" />
     <orderEntry type="module" module-name="twitter-util_main" />
     <orderEntry type="module" module-name="text-util_main" />
+    <orderEntry type="module" module-name="generator-util_main" />
     <orderEntry type="module" module-name="wikihow-scraper_main" />
     <orderEntry type="module" module-name="wiktionary-nl-scraper_main" />
     <orderEntry type="module" module-name="words_main" />
@@ -64,8 +65,8 @@
     <orderEntry type="library" name="Gradle: commons-logging:commons-logging:1.1.1" level="project" />
     <orderEntry type="library" name="Gradle: net.arnx:jsonic:1.2.11" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.commons:commons-lang3:3.5" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.guava:guava:19.0" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.lucene:lucene-core:5.2.1" level="project" />
-    <orderEntry type="library" name="Gradle: com.google.guava:guava:16.0.1" level="project" />
     <orderEntry type="library" name="Gradle: xml-apis:xml-apis:2.0.2" level="project" />
   </component>
   <component name="TestModuleProperties" production-module="burgemeester-bot_main" />

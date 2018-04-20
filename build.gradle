@@ -15,6 +15,7 @@ dependencies {
     compile project(':language-util')
     compile project(':twitter-util')
     compile project(':text-util')
+    compile project(':generator-util')
     compile project(':wikihow-scraper')
     compile project(':wiktionary-nl-scraper')
     compile project(':words')
