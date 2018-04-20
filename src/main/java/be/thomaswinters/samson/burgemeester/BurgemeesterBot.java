@@ -1,13 +1,13 @@
 package be.thomaswinters.samson.burgemeester;
 
 import be.thomaswinters.bot.IChatBot;
-import be.thomaswinters.bot.ITextGeneratorBot;
 import be.thomaswinters.bot.data.IChatMessage;
 import be.thomaswinters.language.SubjectType;
 import be.thomaswinters.language.dutch.DutchSentenceSubjectReplacer;
 import be.thomaswinters.language.stringmorpher.Decapitaliser;
 import be.thomaswinters.samson.burgemeester.util.DutchActionNegator;
 import be.thomaswinters.sentence.SentenceUtil;
+import be.thomaswinters.text.generator.IStringGenerator;
 import be.thomaswinters.textgeneration.domain.constraints.LockConstraint;
 import be.thomaswinters.textgeneration.domain.context.ITextGeneratorContext;
 import be.thomaswinters.textgeneration.domain.context.TextGeneratorContext;
@@ -33,7 +33,7 @@ import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
-public class BurgemeesterBot implements ITextGeneratorBot, IChatBot {
+public class BurgemeesterBot implements IStringGenerator, IChatBot {
 
     private static final String NEDERLANDS = "nl";
     private WikiHowPageScraper wikiHow = new WikiHowPageScraper(NEDERLANDS);
@@ -109,8 +109,6 @@ public class BurgemeesterBot implements ITextGeneratorBot, IChatBot {
                     .collect(Collectors.toList());
         }
         return searchWords;
-
-
     }
 
     private Optional<String> getFirstAction(List<PageCard> pages) {
@@ -151,7 +149,6 @@ public class BurgemeesterBot implements ITextGeneratorBot, IChatBot {
 
     private boolean containsCapitalisedLetters(String input) {
         return !input.toLowerCase().equals(input);
-
     }
 
 
@@ -163,8 +160,6 @@ public class BurgemeesterBot implements ITextGeneratorBot, IChatBot {
 
     public String createToespraak(String action) throws IOException {
         return toespraakGenerator.generate(createGenerationContext(action));
-
-//        return "Aan allen die " + action + ": proficiat.\nAan allen die " + negateAction(action) + ": ook proficiat.";
     }
 
     @Override
@@ -177,6 +172,22 @@ public class BurgemeesterBot implements ITextGeneratorBot, IChatBot {
         return Optional.empty();
     }
 
+
+    @Override
+
+    public Optional<String> generateReply(IChatMessage message) {
+        try {
+            Optional<String> relevantAction = getActionRelevantTo(message.getMessage());
+            if (relevantAction.isPresent()) {
+                return Optional.of(createToespraak(relevantAction.get()));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
+
+    }
+
     public static void main(String[] args) throws IOException, TwitterException {
         BurgemeesterBot burgemeesterBot = new BurgemeesterBotLoader().build();
         TwitterBot bot = new GeneratorTwitterBot(TwitterFactory.getSingleton(), burgemeesterBot, burgemeesterBot);
@@ -184,24 +195,4 @@ public class BurgemeesterBot implements ITextGeneratorBot, IChatBot {
     }
 
 
-    @Override
-    public Optional<String> generateReply(IChatMessage message) {
-        try {
-
-
-            Optional<String> relevantAction = getActionRelevantTo(message.getMessage());
-
-            if (relevantAction.isPresent()) {
-                return Optional.of(createToespraak(relevantAction.get()));
-            }
-
-        } catch (
-                IOException e)
-
-        {
-            e.printStackTrace();
-        }
-        return Optional.empty();
-
-    }
 }
