@@ -22,7 +22,6 @@ import be.thomaswinters.twitter.bot.TwitterBot;
 import be.thomaswinters.twitter.bot.TwitterBotExecutor;
 import be.thomaswinters.twitter.util.TwitterUtil;
 import be.thomaswinters.wikihow.WikiHowPageScraper;
-import be.thomaswinters.wikihow.WikihowLoginCookieCreator;
 import be.thomaswinters.wikihow.WikihowSearcher;
 import be.thomaswinters.wikihow.data.PageCard;
 import org.jsoup.HttpStatusException;
@@ -55,28 +54,11 @@ public class BurgemeesterBot implements IStringGenerator, IChatBot {
                     8
             );
 
-
     public BurgemeesterBot(ITextGenerator toespraakGenerator) {
         this.toespraakTemplatedGenerator = toespraakGenerator;
-
-        this.wikiHowSearcher = createWikihowSearcher();
+        this.wikiHowSearcher = WikihowSearcher.fromEnvironment(NEDERLANDS);
     }
 
-    private WikihowSearcher createWikihowSearcher() {
-        String cookie = null;
-        try {
-            if (System.getenv("wikihow_user") != null && System.getenv("wikihow_password") != null) {
-                cookie = new WikihowLoginCookieCreator().login(
-                        System.getenv("wikihow_user"),
-                        System.getenv("wikihow_password"));
-            } else {
-                System.out.println("No wikihow login specified");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return new WikihowSearcher(NEDERLANDS, cookie);
-    }
 
     private String getRandomAction() throws IOException {
         String randomAction = null;
@@ -96,6 +78,7 @@ public class BurgemeesterBot implements IStringGenerator, IChatBot {
                 .collect(Collectors.toList());
 
         System.out.println("Searching on WikiHow for: " + searchWords);
+
 
         List<PageCard> pages = new ArrayList<>();
         while (pages.isEmpty() && !searchWords.isEmpty()) {
