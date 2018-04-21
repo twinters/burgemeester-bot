@@ -1,5 +1,9 @@
-package be.thomaswinters.samson.burgemeester.util;
+package be.thomaswinters.samson.burgemeester.generators;
 
+import be.thomaswinters.generator.related.FilteringRelatedGenerator;
+import be.thomaswinters.generator.related.IRelatedGenerator;
+import be.thomaswinters.generator.related.MappingRelatedGenerator;
+import be.thomaswinters.generator.related.RelatedGenerator;
 import be.thomaswinters.sentence.SentenceUtil;
 import be.thomaswinters.text.fixers.CompositeFixer;
 import be.thomaswinters.text.fixers.ISentenceFixer;
@@ -17,31 +21,52 @@ import java.util.OptionalInt;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 
-public class ActionGenerator {
+public class ActionGeneratorBuilder {
     private final WikiHowPageScraper wikiHow;
     private final WikihowSearcher wikiHowSearcher;
     private final ISentenceFixer fixer;
 
-    public ActionGenerator(String language, WikihowSearcher wikiHowSearcher, UnaryOperator<String>... fixers) {
+    private final IRelatedGenerator<String> relatedGenerator =
+            new FilteringRelatedGenerator<String>(
+                    new MappingRelatedGenerator<String>(
+                            new RelatedGenerator<>(
+                                    this::getRandomTitle,
+                                    this::getActionRelevantTo),
+                            this::fixAction),
+                    this::isValidAction
+            );
+
+    //region CONSTRUCTOR
+    public ActionGeneratorBuilder(String language, WikihowSearcher wikiHowSearcher, UnaryOperator<String>... fixers) {
         this.wikiHow = new WikiHowPageScraper(language);
         this.wikiHowSearcher = wikiHowSearcher;
         this.fixer = new CompositeFixer(fixers);
+
     }
 
-    public ActionGenerator(String language, UnaryOperator<String>... fixers) {
+    public ActionGeneratorBuilder(String language, UnaryOperator<String>... fixers) {
         this(language, WikihowSearcher.fromEnvironment(language), fixers);
     }
+    //endregion
 
-    public String getRandomAction() throws IOException {
-        String randomAction = null;
-        do {
-            randomAction = fixer.apply(wikiHow.scrapeRandomCard().getTitle());
-        } while (!isValidAction(randomAction));
+    //region BUILDEr
 
-        return randomAction;
+    public IRelatedGenerator<String> buildGenerator() {
+        return relatedGenerator;
     }
 
-    public Optional<String> getActionRelevantTo(String message) {
+    //endregion
+
+    private Optional<String> getRandomTitle() {
+        try {
+            return Optional.of(wikiHow.scrapeRandomCard().getTitle());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return Optional.empty();
+        }
+    }
+
+    private Optional<String> getActionRelevantTo(String message) {
         List<String> searchWords = SentenceUtil.splitOnSpaces(message)
                 .filter(e -> !TwitterUtil.isTwitterWord(e))
                 .map(SentenceUtil::removePunctuations)
@@ -87,6 +112,10 @@ public class ActionGenerator {
 
     private boolean isValidAction(String title) {
         return !SentenceUtil.containsCapitalisedLetters(title) && !title.startsWith("tips");
+    }
+
+    private String fixAction(String action) {
+        return fixer.apply(action);
     }
 
 }
