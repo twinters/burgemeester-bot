@@ -37,6 +37,7 @@ public class ActionGeneratorBuilder {
             );
 
     //region CONSTRUCTOR
+    @SafeVarargs
     public ActionGeneratorBuilder(String language, WikihowSearcher wikiHowSearcher, UnaryOperator<String>... fixers) {
         this.wikiHow = new WikiHowPageScraper(language);
         this.wikiHowSearcher = wikiHowSearcher;
@@ -44,6 +45,7 @@ public class ActionGeneratorBuilder {
 
     }
 
+    @SafeVarargs
     public ActionGeneratorBuilder(String language, UnaryOperator<String>... fixers) {
         this(language, WikihowSearcher.fromEnvironment(language), fixers);
     }
