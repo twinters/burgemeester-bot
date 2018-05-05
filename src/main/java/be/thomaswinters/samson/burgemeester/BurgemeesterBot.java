@@ -1,10 +1,8 @@
 package be.thomaswinters.samson.burgemeester;
 
-import be.thomaswinters.bot.IChatBot;
-import be.thomaswinters.bot.data.IChatMessage;
-import be.thomaswinters.generator.generators.SelectionGenerator;
+import be.thomaswinters.chatbot.IChatBot;
+import be.thomaswinters.chatbot.data.IChatMessage;
 import be.thomaswinters.generator.related.IRelatedGenerator;
-import be.thomaswinters.generator.related.MappingRelatedGenerator;
 import be.thomaswinters.generator.selection.RouletteWheelSelection;
 import be.thomaswinters.language.SubjectType;
 import be.thomaswinters.language.dutch.DutchSentenceSubjectReplacer;
@@ -17,14 +15,12 @@ import be.thomaswinters.textgeneration.domain.context.TextGeneratorContext;
 import be.thomaswinters.textgeneration.domain.generators.ITextGenerator;
 import be.thomaswinters.textgeneration.domain.generators.StaticTextGenerator;
 import be.thomaswinters.textgeneration.domain.generators.named.NamedGeneratorRegister;
-import be.thomaswinters.twitter.GeneratorTwitterBot;
-import be.thomaswinters.twitter.bot.TwitterBot;
 import be.thomaswinters.twitter.bot.TwitterBotExecutor;
 import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Optional;
 
 public class BurgemeesterBot implements IStringGenerator, IChatBot {
@@ -34,19 +30,27 @@ public class BurgemeesterBot implements IStringGenerator, IChatBot {
     private final ITextGenerator toespraakTemplatedGenerator;
     private final IRelatedGenerator<String> actionGenerator =
             new ActionGeneratorBuilder("nl",
+                    Arrays.asList(
+                            "samson",
+                            "gert",
+                            "burgemeester",
+                            "meneer",
+                            "de",
+                            "albert",
+                            "alberto",
+                            "AL-BER-TOOOOOOO"
+                    ),
                     Decapitaliser::decapitaliseFirstLetter,
                     SentenceUtil::removeBetweenBrackets,
                     this::replaceSubject
             ).buildGenerator();
+
     private final IRelatedGenerator<String> toespraakGenerator =
-            new MappingRelatedGenerator<>(
-                    actionGenerator
-                            .updateGenerator(generator ->
-                                    new SelectionGenerator<String>(
-                                            generator,
-                                            new RouletteWheelSelection<>(this::getToespraakFitness), 8)),
-                    this::createToespraak
-            );
+            actionGenerator
+                    .map(this::createToespraak)
+                    .updateGenerator(generator -> generator
+                            .select(8,
+                                    new RouletteWheelSelection<>(this::getToespraakFitness)));
 
     public BurgemeesterBot(ITextGenerator toespraakGenerator) {
         this.toespraakTemplatedGenerator = toespraakGenerator;
@@ -98,13 +102,12 @@ public class BurgemeesterBot implements IStringGenerator, IChatBot {
 
     @Override
     public Optional<String> generateReply(IChatMessage message) {
+        System.out.println("Generating reply for: " + message.getMessage());
         return toespraakGenerator.generateRelated(message.getMessage());
     }
 
     public static void main(String[] args) throws IOException, TwitterException {
-        BurgemeesterBot burgemeesterBot = new BurgemeesterBotLoader().build();
-        TwitterBot bot = new GeneratorTwitterBot(TwitterFactory.getSingleton(), burgemeesterBot, burgemeesterBot);
-        new TwitterBotExecutor(bot).run(args);
+        new TwitterBotExecutor(new BurgemeesterBotLoader().buildTwitterBot()).run(args);
     }
 
 
