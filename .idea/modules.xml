@@ -5,6 +5,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/burgemeester-bot.iml" filepath="$PROJECT_DIR$/.idea/modules/burgemeester-bot.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/burgemeester-bot_main.iml" filepath="$PROJECT_DIR$/.idea/modules/burgemeester-bot_main.iml" group="burgemeester-bot" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/burgemeester-bot_test.iml" filepath="$PROJECT_DIR$/.idea/modules/burgemeester-bot_test.iml" group="burgemeester-bot" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/983139517/chatbot-util.iml" filepath="$PROJECT_DIR$/.idea/modules/983139517/chatbot-util.iml" group="chatbot-util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/983139517/chatbot-util_main.iml" filepath="$PROJECT_DIR$/.idea/modules/983139517/chatbot-util_main.iml" group="chatbot-util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/983139517/chatbot-util_test.iml" filepath="$PROJECT_DIR$/.idea/modules/983139517/chatbot-util_test.iml" group="chatbot-util" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/604709017/generator-util.iml" filepath="$PROJECT_DIR$/.idea/modules/604709017/generator-util.iml" group="generator-util" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/604709017/generator-util_main.iml" filepath="$PROJECT_DIR$/.idea/modules/604709017/generator-util_main.iml" group="generator-util" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/604709017/generator-util_test.iml" filepath="$PROJECT_DIR$/.idea/modules/604709017/generator-util_test.iml" group="generator-util" />

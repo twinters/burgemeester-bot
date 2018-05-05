@@ -4,7 +4,7 @@ plugins {
 
 apply plugin: 'java'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 9
 
 repositories {
     mavenCentral()
@@ -16,6 +16,7 @@ dependencies {
     compile project(':twitter-util')
     compile project(':text-util')
     compile project(':generator-util')
+    compile project(':chatbot-util')
     compile project(':wikihow-scraper')
     compile project(':wiktionary-nl-scraper')
     compile project(':words')
@@ -26,6 +27,7 @@ heroku {
     processTypes(
             worker: "java -jar build/libs/burgemeester-bot.jar -mode post"
     )
+    includes = ["D:\\Self\\Repositories\\" + appName + "\\system.properties"]
 }
 
 jar {
