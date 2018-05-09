@@ -20,10 +20,7 @@ public class ActionNegatorCommand extends SingleGeneratorArgumentCommand {
     public String apply(String string, ITextGeneratorContext parameters) {
         try {
             return actionNegator.negateAction(string).get();
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        } catch (ExecutionException e) {
+        } catch (IOException | ExecutionException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }

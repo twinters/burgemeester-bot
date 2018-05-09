@@ -7,8 +7,8 @@ import be.thomaswinters.textgeneration.domain.generators.ITextGenerator;
 import be.thomaswinters.textgeneration.domain.parsers.DeclarationsFileParser;
 import be.thomaswinters.twitter.GeneratorTwitterBot;
 import be.thomaswinters.twitter.bot.TwitterBot;
-import be.thomaswinters.twitter.bot.util.TwitterLoginUtil;
 import be.thomaswinters.twitter.tweetsfetcher.SearchTweetsFetcher;
+import be.thomaswinters.twitter.util.TwitterLogin;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,7 +34,7 @@ public class BurgemeesterBotLoader {
 
     public TwitterBot buildTwitterBot() throws IOException {
         BurgemeesterBot burgemeesterBot = build();
-        return new GeneratorTwitterBot(TwitterLoginUtil.getTwitterFromEnvironment(),
+        return new GeneratorTwitterBot(TwitterLogin.getTwitterFromEnvironment(),
                 burgemeesterBot, burgemeesterBot,
                 TwitterBot.MENTIONS_RETRIEVER,
                 twitter -> new SearchTweetsFetcher(twitter, Arrays.asList("burgemeester", "samson")));

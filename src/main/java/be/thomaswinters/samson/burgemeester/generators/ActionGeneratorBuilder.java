@@ -58,7 +58,7 @@ public class ActionGeneratorBuilder {
             return Optional.of(wikiHow.scrapeRandomCard().getTitle());
         } catch (IOException e) {
             e.printStackTrace();
-            return Optional.empty();
+            throw new RuntimeException(e);
         }
     }
 
@@ -87,7 +87,7 @@ public class ActionGeneratorBuilder {
             }
         }
 
-        return getFirstAction(pages);
+        return getFirstAction(pages).or(this::getRandomTitle);
     }
 
     private boolean isAllowedWord(String s) {
