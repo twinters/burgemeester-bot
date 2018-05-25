@@ -2,7 +2,7 @@ package be.thomaswinters.samson.burgemeester;
 
 import be.thomaswinters.chatbot.IChatBot;
 import be.thomaswinters.chatbot.data.IChatMessage;
-import be.thomaswinters.generator.related.IRelatedGenerator;
+import be.thomaswinters.generator.generators.related.IRelatedGenerator;
 import be.thomaswinters.generator.selection.RouletteWheelSelection;
 import be.thomaswinters.language.SubjectType;
 import be.thomaswinters.language.dutch.DutchSentenceSubjectReplacer;
@@ -28,7 +28,7 @@ public class BurgemeesterBot implements IStringGenerator, IChatBot {
     private final DutchSentenceSubjectReplacer subjectReplacer = new DutchSentenceSubjectReplacer();
 
     private final ITextGenerator toespraakTemplatedGenerator;
-    private final IRelatedGenerator<String> actionGenerator =
+    private final IRelatedGenerator<String,String> actionGenerator =
             new ActionGeneratorBuilder("nl",
                     Arrays.asList(
                             "samson",
@@ -45,7 +45,7 @@ public class BurgemeesterBot implements IStringGenerator, IChatBot {
                     this::replaceSubject
             ).buildGenerator();
 
-    private final IRelatedGenerator<String> toespraakGenerator =
+    private final IRelatedGenerator<String,String> toespraakGenerator =
             actionGenerator
                     .map(this::createToespraak)
                     .updateGenerator(generator -> generator

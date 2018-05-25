@@ -5,7 +5,7 @@ import be.thomaswinters.textgeneration.domain.factories.command.CommandFactory;
 import be.thomaswinters.textgeneration.domain.factories.command.SingleTextGeneratorArgumentCommandFactory;
 import be.thomaswinters.textgeneration.domain.generators.ITextGenerator;
 import be.thomaswinters.textgeneration.domain.parsers.DeclarationsFileParser;
-import be.thomaswinters.twitter.GeneratorTwitterBot;
+import be.thomaswinters.twitter.bot.GeneratorTwitterBot;
 import be.thomaswinters.twitter.bot.TwitterBot;
 import be.thomaswinters.twitter.tweetsfetcher.SearchTweetsFetcher;
 import be.thomaswinters.twitter.util.TwitterLogin;

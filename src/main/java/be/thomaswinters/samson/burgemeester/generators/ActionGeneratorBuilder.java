@@ -1,7 +1,7 @@
 package be.thomaswinters.samson.burgemeester.generators;
 
-import be.thomaswinters.generator.related.IRelatedGenerator;
-import be.thomaswinters.generator.related.RelatedGenerator;
+import be.thomaswinters.generator.generators.related.IRelatedGenerator;
+import be.thomaswinters.generator.generators.related.RelatedGenerator;
 import be.thomaswinters.sentence.SentenceUtil;
 import be.thomaswinters.text.fixers.CompositeFixer;
 import be.thomaswinters.text.fixers.ISentenceFixer;
@@ -23,7 +23,7 @@ public class ActionGeneratorBuilder {
     private final ISentenceFixer fixer;
     private final Collection<String> blackListWords;
 
-    private final IRelatedGenerator<String> relatedGenerator =
+    private final IRelatedGenerator<String, String> relatedGenerator =
             new RelatedGenerator<>(this::getRandomTitle, this::getActionRelevantTo)
                     .map(this::fixAction)
                     .updateGenerator(generator -> generator
@@ -47,7 +47,7 @@ public class ActionGeneratorBuilder {
 
     //region BUILDER
 
-    public IRelatedGenerator<String> buildGenerator() {
+    public IRelatedGenerator<String,String> buildGenerator() {
         return relatedGenerator;
     }
 
