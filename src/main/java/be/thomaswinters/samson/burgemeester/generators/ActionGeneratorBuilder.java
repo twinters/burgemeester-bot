@@ -87,7 +87,8 @@ public class ActionGeneratorBuilder {
             }
         }
 
-        return getFirstAction(pages).or(this::getRandomTitle);
+        return getFirstAction(pages);
+        //.or(this::getRandomTitle);
     }
 
     private boolean isAllowedWord(String s) {
