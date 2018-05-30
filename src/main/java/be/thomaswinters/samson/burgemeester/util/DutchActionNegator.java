@@ -29,7 +29,7 @@ public class DutchActionNegator {
         this(createDefaultRules());
     }
 
-    private static final List<String> prohibitedAntonymWords = Arrays.asList("die", "heel", "met", "wijze");
+    private static final List<String> prohibitedAntonymWords = Arrays.asList("die", "heel", "met", "wijze", "weer");
 
     private static NegatorRule createDefaultRules() {
         ILanguageTool languageTool = new CachedLanguageTool(new JLanguageToolAdaptor(new JLanguageTool(new Dutch())));
