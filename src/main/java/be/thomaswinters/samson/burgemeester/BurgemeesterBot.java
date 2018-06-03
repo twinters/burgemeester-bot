@@ -21,6 +21,7 @@ import twitter4j.TwitterException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 public class BurgemeesterBot implements IStringGenerator, IChatBot {
@@ -28,20 +29,20 @@ public class BurgemeesterBot implements IStringGenerator, IChatBot {
     private final DutchSentenceSubjectReplacer subjectReplacer = new DutchSentenceSubjectReplacer();
 
     private final ITextGenerator toespraakTemplatedGenerator;
+    private final List<String> replyWordBlackListWords =  Arrays.asList(
+            "samson",
+            "gert",
+            "burgemeester",
+            "meneer",
+            "de",
+            "albert",
+            "alberto",
+            "AL-BER-TOOOOOOO"
+    );
 
     private final IRelatedGenerator<String,String> toespraakGenerator =
-            new ActionGeneratorBuilder("nl",
-                    Arrays.asList(
-                            "samson",
-                            "gert",
-                            "burgemeester",
-                            "meneer",
-                            "de",
-                            "albert",
-                            "alberto",
-                            "AL-BER-TOOOOOOO"
-                    )
-            ).buildGenerator()
+            new ActionGeneratorBuilder("nl", replyWordBlackListWords)
+                    .buildGenerator()
                     .map(Decapitaliser::decapitaliseFirstLetter)
                     .map(SentenceUtil::removeBetweenBrackets)
                     .map(this::replaceSubject)

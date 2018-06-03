@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class ActionGeneratorBuilder {
     private final WikiHowPageScraper wikiHow;
     private final WikihowSearcher wikiHowSearcher;
-    private final Collection<String> blackListWords;
+    private final Collection<String> replyWordBlackListWords;
 
     private final IRelatedGenerator<String, String> relatedGenerator =
             new RelatedGenerator<>(this::getRandomTitle, this::getActionRelevantTo)
@@ -25,10 +25,10 @@ public class ActionGeneratorBuilder {
                             .filter(10, this::isValidAction));
 
     //region CONSTRUCTOR
-    public ActionGeneratorBuilder(String language, WikihowSearcher wikiHowSearcher, Collection<String> blackListWords) {
+    public ActionGeneratorBuilder(String language, WikihowSearcher wikiHowSearcher, Collection<String> replyWordBlackListWords) {
         this.wikiHow = new WikiHowPageScraper(language);
         this.wikiHowSearcher = wikiHowSearcher;
-        this.blackListWords = ImmutableSet.copyOf(blackListWords);
+        this.replyWordBlackListWords = ImmutableSet.copyOf(replyWordBlackListWords);
 
     }
 
@@ -84,7 +84,7 @@ public class ActionGeneratorBuilder {
     }
 
     private boolean isAllowedWord(String s) {
-        return !blackListWords.contains(s.toLowerCase());
+        return !replyWordBlackListWords.contains(s.toLowerCase());
     }
 
     private List<String> removeShortestWords(List<String> searchWords) {
