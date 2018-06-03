@@ -20,9 +20,7 @@ public class ActionGeneratorBuilder {
     private final Collection<String> replyWordBlackListWords;
 
     private final IRelatedGenerator<String, String> relatedGenerator =
-            new RelatedGenerator<>(this::getRandomTitle, this::getActionRelevantTo)
-                    .updateGenerator(generator -> generator
-                            .filter(10, this::isValidAction));
+            new RelatedGenerator<>(this::getRandomTitle, this::getActionRelevantTo);
 
     //region CONSTRUCTOR
     public ActionGeneratorBuilder(String language, WikihowSearcher wikiHowSearcher, Collection<String> replyWordBlackListWords) {
@@ -103,8 +101,5 @@ public class ActionGeneratorBuilder {
                 .findFirst();
     }
 
-    private boolean isValidAction(String title) {
-        return !SentenceUtil.containsCapitalisedLetters(title) && !title.startsWith("tips");
-    }
 
 }

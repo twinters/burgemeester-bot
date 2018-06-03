@@ -44,6 +44,8 @@ public class BurgemeesterBot implements IStringGenerator, IChatBot {
             new ActionGeneratorBuilder("nl", replyWordBlackListWords)
                     .buildGenerator()
                     .map(Decapitaliser::decapitaliseFirstLetter)
+                    .filter(10, title->!SentenceUtil.containsCapitalisedLetters(title))
+                    .filter(title->!title.startsWith("tips"))
                     .map(SentenceUtil::removeBetweenBrackets)
                     .map(this::replaceSubject)
                     .map(this::createToespraakForAction)
