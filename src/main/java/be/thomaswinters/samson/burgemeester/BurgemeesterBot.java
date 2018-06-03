@@ -28,7 +28,8 @@ public class BurgemeesterBot implements IStringGenerator, IChatBot {
     private final DutchSentenceSubjectReplacer subjectReplacer = new DutchSentenceSubjectReplacer();
 
     private final ITextGenerator toespraakTemplatedGenerator;
-    private final IRelatedGenerator<String,String> actionGenerator =
+
+    private final IRelatedGenerator<String,String> toespraakGenerator =
             new ActionGeneratorBuilder("nl",
                     Arrays.asList(
                             "samson",
@@ -39,15 +40,12 @@ public class BurgemeesterBot implements IStringGenerator, IChatBot {
                             "albert",
                             "alberto",
                             "AL-BER-TOOOOOOO"
-                    ),
-                    Decapitaliser::decapitaliseFirstLetter,
-                    SentenceUtil::removeBetweenBrackets,
-                    this::replaceSubject
-            ).buildGenerator();
-
-    private final IRelatedGenerator<String,String> toespraakGenerator =
-            actionGenerator
-                    .map(this::createToespraak)
+                    )
+            ).buildGenerator()
+                    .map(Decapitaliser::decapitaliseFirstLetter)
+                    .map(SentenceUtil::removeBetweenBrackets)
+                    .map(this::replaceSubject)
+                    .map(this::createToespraakForAction)
                     .updateGenerator(generator -> generator
                             .select(8,
                                     new RouletteWheelSelection<>(this::getToespraakFitness)));
@@ -80,6 +78,9 @@ public class BurgemeesterBot implements IStringGenerator, IChatBot {
         if (e.contains("niet") || e.contains("geen")) {
             return 1d;
         }
+        if (e.contains("uit") && e.contains("in")) {
+            return 4d;
+        }
         return 20d;
     }
 
@@ -89,7 +90,7 @@ public class BurgemeesterBot implements IStringGenerator, IChatBot {
         return new TextGeneratorContext(new ArrayList<>(), register, true);
     }
 
-    private String createToespraak(String action) {
+    private String createToespraakForAction(String action) {
         return toespraakTemplatedGenerator.generate(createGenerationContext(action));
     }
 
