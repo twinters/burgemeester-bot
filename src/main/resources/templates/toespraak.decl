@@ -9,16 +9,19 @@ toespraak = {
 	Aan allen die <actie.negate>: ook proficiat.
 }
 
-verleden = (zonet|gisteren|onlangs|vorige)( nog){.8}
+verleden = (zonet|gisteren|onlangs|vorige week)( nog){.9}
 luistermaar = luister( maar){.6}
 
 toespraakDaarover = {
 	5: Ik heb <verleden>( toevallig){.5} een toespraak over <langstewoord> geschreven
 	1: Ik heb daar <verleden> een toespraak (over|voor) geschreven
 }
+gaatAlsVolgt = het gaat als volgt:|<luistermaar>:
+
 toespraakAankondiging = {
 	1: Dat (vraagt om|verdient) een toespraak(!|:)
-	1: (Dat is toevallig! |Toevallig! ){.4}<toespraakDaarover>(!( Het gaat als volgt:| <luistermaar.capitalise>:){.4}|:|, <luistermaar>{.6}:)
+	2: (Dat is toevallig! |Toevallig! |Ah(, toevallig)! ){.6}<toespraakDaarover>(! <gaatAlsVolgt.capitalise>{.4}|, <gaatAlsVolgt>|:|, <luistermaar>{.6}:)
+	1: (Ah! ){.8}Toevallig heb ik nog een toespraak liggen (over <langstewoord>|daarover)! <gaatAlsVolgt.capitalise>
 }
 
 reply = {
