@@ -16,7 +16,7 @@ toespraakDaarover = {
 	5: Ik heb <verleden>( toevallig){.5} een toespraak over <langstewoord> geschreven
 	1: Ik heb daar <verleden> een toespraak (over|voor) geschreven
 }
-gaatAlsVolgt = het gaat als volgt:|<luistermaar>:
+gaatAlsVolgt = het gaat als volgt(:|, <luistermaar>)|<luistermaar>:
 
 toespraakAankondiging = {
 	1: Dat (vraagt om|verdient) een toespraak(!|:)
