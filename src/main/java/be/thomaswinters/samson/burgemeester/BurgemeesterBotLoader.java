@@ -48,18 +48,17 @@ public class BurgemeesterBotLoader {
         long samsonBotsList = 1006565134796500992L;
         Collection<User> botFriends = ListUserFetcher.getUsers(twitter, samsonBotsList);
 
-        Function<Twitter, ITweetsFetcher> tweetsToAnswer =
-                twit ->
-                        TwitterBot.MENTIONS_RETRIEVER.apply(twit)
+        ITweetsFetcher tweetsToAnswer =
+                        TwitterBot.MENTIONS_RETRIEVER.apply(twitter)
                                 .combineWith(
                                         new SearchTweetsFetcher(twitter, Arrays.asList("burgemeester", "samson"))
-                                                .filterRandomlyIf(twit, x -> true, 1, 3)
+                                                .filterRandomlyIf(twitter, x -> true, 1, 3)
                                 )
                                 .combineWith(
-                                        new AdvancedListTweetsFetcher(twit, samsonBotsList, false, true)
+                                        new AdvancedListTweetsFetcher(twitter, samsonBotsList, false, true)
                                 )
                                 // Filter out botfriends tweets randomly
-                                .filterRandomlyIf(twit, e -> botFriends.contains(e.getUser()), 1, 10)
+                                .filterRandomlyIf(twitter, e -> botFriends.contains(e.getUser()), 1, 10)
                                 // Filter out own tweets & retweets
                                 .filterOutRetweets()
                                 .filterOutOwnTweets(twitter);
