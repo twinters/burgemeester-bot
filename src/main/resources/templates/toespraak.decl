@@ -3,8 +3,27 @@ u2 = u{1,2}
 
 ahem = Ahe<u1:1>m. Ahe<u1:1><u2>m. Aheum.
 
-main = {
+toespraak = {
 	<ahem>
 	Aan allen die <actie>: proficiat.
 	Aan allen die <actie.negate>: ook proficiat.
 }
+
+verleden = (zonet|gisteren|onlangs|vorige)( nog){.8}
+luistermaar = luister( maar){.6}
+
+toespraakDaarover = {
+	5: Ik heb <verleden>( toevallig){.5} een toespraak over <langstewoord> geschreven
+	1: Ik heb daar <verleden> een toespraak (over|voor) geschreven
+}
+toespraakAankondiging = {
+	1: Dat (vraagt om|verdient) een toespraak(!|:)
+	1: (Dat is toevallig! |Toevallig! ){.4}<toespraakDaarover>(!( Het gaat als volgt:| <luistermaar.capitalise>:){.4}|:|, <luistermaar>{.6}:)
+}
+
+reply = {
+	<toespraakAankondiging>
+	<toespraak>
+}
+
+main = <toespraak>
