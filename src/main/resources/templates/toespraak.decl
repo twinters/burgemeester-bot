@@ -16,12 +16,14 @@ toespraakDaarover = {
 	5: Ik heb <verleden>( toevallig){.5} een toespraak over <langstewoord> geschreven
 	1: Ik heb daar <verleden> een toespraak (over|voor) geschreven
 }
-gaatAlsVolgt = het gaat als volgt(:|, <luistermaar>)|<luistermaar>:
+gaatAlsVolgt = het gaat als volgt(:|, <luistermaar>:)|<luistermaar>:
 
 toespraakAankondiging = {
-	1: Dat (vraagt om|verdient) een toespraak(!|:)
-	2: (Dat is toevallig! |Toevallig! |Ah(, toevallig)! ){.6}<toespraakDaarover>(! <gaatAlsVolgt.capitalise>{.4}|, <gaatAlsVolgt>|:|, <luistermaar>{.6}:)
-	1: (Ah! ){.8}Toevallig heb ik nog een toespraak liggen (over <langstewoord>|daarover)! <gaatAlsVolgt.capitalise>
+	1: Ik vind dat hier een toespraak past!
+		(Beste leden van de fanfare... (Oh|Oeps), verkeerde toespraak! (A|O)h ja, hier wacht!){.5}
+	2: Dat (vraagt om|verdient) een toespraak(!|:)
+	4: (Dat is toevallig! |Toevallig! |Ah(, toevallig)! ){.6}<toespraakDaarover>(! <gaatAlsVolgt.capitalise>{.4}|, <gaatAlsVolgt>|:|, <luistermaar>{.6}:)
+	2: (Ah! ){.8}Toevallig heb ik nog een toespraak liggen (over <langstewoord>|daarover)! <gaatAlsVolgt.capitalise>
 }
 
 reply = {

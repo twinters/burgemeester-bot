@@ -3,10 +3,9 @@ package be.thomaswinters.samson.burgemeester;
 import be.thomaswinters.samson.burgemeester.util.ActionNegatorCommand;
 import be.thomaswinters.textgeneration.domain.factories.command.CommandFactory;
 import be.thomaswinters.textgeneration.domain.factories.command.SingleTextGeneratorArgumentCommandFactory;
-import be.thomaswinters.textgeneration.domain.generators.ITextGenerator;
 import be.thomaswinters.textgeneration.domain.generators.databases.DeclarationFileTextGenerator;
 import be.thomaswinters.textgeneration.domain.parsers.DeclarationsFileParser;
-import be.thomaswinters.twitter.bot.GeneratorTwitterBot;
+import be.thomaswinters.twitter.bot.BehaviourCreator;
 import be.thomaswinters.twitter.bot.TwitterBot;
 import be.thomaswinters.twitter.tweetsfetcher.AdvancedListTweetsFetcher;
 import be.thomaswinters.twitter.tweetsfetcher.ITweetsFetcher;
@@ -22,7 +21,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Function;
 
 public class BurgemeesterBotLoader {
 
@@ -49,25 +47,26 @@ public class BurgemeesterBotLoader {
         Collection<User> botFriends = ListUserFetcher.getUsers(twitter, samsonBotsList);
 
         ITweetsFetcher tweetsToAnswer =
-                        TwitterBot.MENTIONS_RETRIEVER.apply(twitter)
-                                .combineWith(
-                                        new SearchTweetsFetcher(twitter, Arrays.asList("burgemeester", "samson"))
-                                                .filterRandomlyIf(twitter, x -> true, 1, 3)
-                                )
-                                .combineWith(
-                                        new AdvancedListTweetsFetcher(twitter, samsonBotsList, false, true)
-                                )
-                                // Filter out botfriends tweets randomly
-                                .filterRandomlyIf(twitter, e -> botFriends.contains(e.getUser()), 1, 10)
-                                // Filter out own tweets & retweets
-                                .filterOutRetweets()
-                                .filterOutOwnTweets(twitter);
+                TwitterBot.MENTIONS_RETRIEVER.apply(twitter)
+                        .combineWith(
+                                new SearchTweetsFetcher(twitter, Arrays.asList("burgemeester", "samson"))
+                                        .filterRandomlyIf(twitter, x -> true, 1, 3)
+                        )
+                        .combineWith(
+                                new AdvancedListTweetsFetcher(twitter, samsonBotsList, false, true)
+                        )
+                        // Filter out botfriends tweets randomly
+                        .filterRandomlyIf(twitter, e -> botFriends.contains(e.getUser()), 1, 25)
+                        // Filter out own tweets & retweets
+                        .filterOutRetweets()
+                        .filterOutOwnTweets(twitter);
 
 
         BurgemeesterBot burgemeesterBot = build();
 
-        return new GeneratorTwitterBot(twitter,
-                burgemeesterBot, burgemeesterBot,
+        return new TwitterBot(twitter,
+                BehaviourCreator.fromTextGenerator(burgemeesterBot),
+                BehaviourCreator.fromMessageReactor(burgemeesterBot),
                 tweetsToAnswer);
     }
 

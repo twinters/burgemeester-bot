@@ -10,22 +10,34 @@ import be.thomaswinters.language.dutch.DutchSentenceSubjectReplacer;
 import be.thomaswinters.language.stringmorpher.Decapitaliser;
 import be.thomaswinters.samson.burgemeester.generators.ActionGeneratorBuilder;
 import be.thomaswinters.sentence.SentenceUtil;
-import be.thomaswinters.text.generator.IStringGenerator;
 import be.thomaswinters.textgeneration.domain.context.ITextGeneratorContext;
 import be.thomaswinters.textgeneration.domain.context.TextGeneratorContext;
 import be.thomaswinters.textgeneration.domain.generators.databases.DeclarationFileTextGenerator;
 import be.thomaswinters.textgeneration.domain.generators.named.NamedGeneratorRegister;
-import be.thomaswinters.twitter.bot.TwitterBotExecutor;
 import be.thomaswinters.twitter.util.TwitterUtil;
 import twitter4j.TwitterException;
 
 import java.io.IOException;
 import java.util.*;
 
-public class BurgemeesterBot implements IStringGenerator, IChatBot {
+// Todo: use related generator here instead of these
+public class BurgemeesterBot implements IRelatedGenerator<String, IChatMessage> {
 
+    private static final List<String> samsonBotWords = Arrays.asList(
+
+            // Gert woorden
+            "maar", "betekent",
+
+            // Alberto woorden
+            "lekker", "overheerlijk(e)?",
+
+            // Octaaf woorden
+            "specialiteit.*", "toevallig",
+
+            // Jeanine woorden
+            "moeder", "vader", "typisch", "hobbyclub.*", "voorzitster", "jongen"
+    );
     private final DutchSentenceSubjectReplacer subjectReplacer = new DutchSentenceSubjectReplacer();
-
     private final DeclarationFileTextGenerator toespraakTemplatedGenerator;
     private final List<String> replyWordBlackListWords = Arrays.asList(
             "samson",
@@ -37,7 +49,6 @@ public class BurgemeesterBot implements IStringGenerator, IChatBot {
             "alberto",
             "AL-BER-TOOOOOOO"
     );
-
     private final IRelatedGenerator<String, String> actionGenerator =
             new ActionGeneratorBuilder("nl", replyWordBlackListWords)
                     .buildGenerator()
@@ -53,17 +64,16 @@ public class BurgemeesterBot implements IStringGenerator, IChatBot {
                             .select(8,
                                     new RouletteWheelSelection<>(this::getToespraakFitness)));
 
+    //region Toespraak Fixer
 
     public BurgemeesterBot(DeclarationFileTextGenerator toespraakGenerator) {
         this.toespraakTemplatedGenerator = toespraakGenerator;
     }
-
-    //region Toespraak Fixer
+    //end region
 
     public static void main(String[] args) throws IOException, TwitterException {
-        new TwitterBotExecutor(new BurgemeesterBotLoader().buildTwitterBot()).run(args);
+        new BurgemeesterBotLoader().buildTwitterBot().createExecutor().run(args);
     }
-    //end region
 
     /**
      * Replaces the subject from second person to third person
@@ -102,19 +112,26 @@ public class BurgemeesterBot implements IStringGenerator, IChatBot {
     }
 
     @Override
-    public Optional<String> generateText() {
+    public Optional<String> generate() {
         return randomToespraakGenerator.generate();
     }
 
-    @Override
-    public Optional<String> generateReply(IChatMessage message) {
-        System.out.println("Generating reply for: " + message.getText());
 
-        Optional<String> optionalAction = actionGenerator.generateRelated(message.getText());
+    @Override
+    public Optional<String> generateRelated(IChatMessage message) {
+        String text = message.getText();
+        for (String word : samsonBotWords) {
+            text = text.replaceAll(word, "");
+        }
+        String finalText = text.replaceAll(" {2}", " ");
+
+        Optional<String> optionalAction = actionGenerator.generateRelated(finalText);
         return optionalAction.map(action -> {
                     ITextGeneratorContext register = createGenerationContext(action);
-                    SentenceUtil.splitOnSpaces(message.getText())
-                            .filter(e->!TwitterUtil.isTwitterWord(e))
+
+                    SentenceUtil.splitOnSpaces(finalText)
+                            .filter(e -> !TwitterUtil.isTwitterWord(e))
+                            .filter(e -> samsonBotWords.stream().noneMatch(e::matches))
                             .map(SentenceUtil::removeNonLetters)
                             .max(Comparator.comparingInt(String::length))
                             .ifPresent(longWord -> register.createGenerator("langstewoord", longWord));
@@ -122,6 +139,4 @@ public class BurgemeesterBot implements IStringGenerator, IChatBot {
                 }
         );
     }
-
-
 }
