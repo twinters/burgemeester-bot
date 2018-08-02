@@ -66,7 +66,7 @@ public class BurgemeesterBot implements IRelatedGenerator<String, IChatMessage> 
 
     //region Toespraak Fixer
 
-    public BurgemeesterBot(DeclarationFileTextGenerator toespraakGenerator) {
+    public BurgemeesterBot(DeclarationFileTextGenerator toespraakGenerator) throws IOException {
         this.toespraakTemplatedGenerator = toespraakGenerator;
     }
     //end region
@@ -118,14 +118,14 @@ public class BurgemeesterBot implements IRelatedGenerator<String, IChatMessage> 
 
 
     @Override
-    public Optional<String> generateRelated(IChatMessage message) {
+    public Optional<String> generate(IChatMessage message) {
         String text = message.getText();
         for (String word : samsonBotWords) {
             text = text.replaceAll(word, "");
         }
         String finalText = text.replaceAll(" {2}", " ");
 
-        Optional<String> optionalAction = actionGenerator.generateRelated(finalText);
+        Optional<String> optionalAction = actionGenerator.generate(finalText);
         return optionalAction.map(action -> {
                     ITextGeneratorContext register = createGenerationContext(action);
 
