@@ -5,6 +5,7 @@
     <mapping directory="$PROJECT_DIR$/../chatbot-util" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../generator-util" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../language-util" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../news-scraper" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../text-util" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../twitter-util" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../wikihow-scraper" vcs="Git" />

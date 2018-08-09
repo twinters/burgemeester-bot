@@ -14,6 +14,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1810188250/language-util.iml" filepath="$PROJECT_DIR$/.idea/modules/1810188250/language-util.iml" group="language-util" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1810188250/language-util_main.iml" filepath="$PROJECT_DIR$/.idea/modules/1810188250/language-util_main.iml" group="language-util" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1810188250/language-util_test.iml" filepath="$PROJECT_DIR$/.idea/modules/1810188250/language-util_test.iml" group="language-util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1934901345/news-scraper.iml" filepath="$PROJECT_DIR$/.idea/modules/1934901345/news-scraper.iml" group="news-scraper" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1934901345/news-scraper_main.iml" filepath="$PROJECT_DIR$/.idea/modules/1934901345/news-scraper_main.iml" group="news-scraper" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1934901345/news-scraper_test.iml" filepath="$PROJECT_DIR$/.idea/modules/1934901345/news-scraper_test.iml" group="news-scraper" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-60019547/text-util.iml" filepath="$PROJECT_DIR$/.idea/modules/-60019547/text-util.iml" group="text-util" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-60019547/text-util_main.iml" filepath="$PROJECT_DIR$/.idea/modules/-60019547/text-util_main.iml" group="text-util" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-60019547/text-util_test.iml" filepath="$PROJECT_DIR$/.idea/modules/-60019547/text-util_test.iml" group="text-util" />

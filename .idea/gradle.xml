@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/../chatbot-util" />
             <option value="$PROJECT_DIR$/../generator-util" />
             <option value="$PROJECT_DIR$/../language-util" />
+            <option value="$PROJECT_DIR$/../news-scraper" />
             <option value="$PROJECT_DIR$/../text-util" />
             <option value="$PROJECT_DIR$/../twitter-util" />
             <option value="$PROJECT_DIR$/../wikihow-scraper" />

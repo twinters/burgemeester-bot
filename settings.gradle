@@ -14,4 +14,6 @@ include ':wikihow-scraper'
 project(':wikihow-scraper').projectDir = new File(settingsDir, '../wikihow-scraper')
 include ':wiktionary-nl-scraper'
 project(':wiktionary-nl-scraper').projectDir = new File(settingsDir, '../wiktionary-nl-scraper')
+include ':news-scraper'
+project(':news-scraper').projectDir = new File(settingsDir, '../news-scraper')
 rootProject.name = 'burgemeester-bot'

@@ -10,6 +10,8 @@
       <module name="generator-util_test" target="1.9" />
       <module name="language-util_main" target="1.9" />
       <module name="language-util_test" target="1.9" />
+      <module name="news-scraper_main" target="1.8" />
+      <module name="news-scraper_test" target="1.8" />
       <module name="Repositories-wikihow-scraper_main" target="1.8" />
       <module name="Repositories-wikihow-scraper_test" target="1.8" />
       <module name="text-util_main" target="1.9" />
