@@ -1,18 +1,19 @@
 package be.thomaswinters.samson.burgemeester.util;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class DutchActionNegatorTest {
 
     private DutchActionNegator negator;
 
-    @Before
+    @BeforeEach
     public void setup() {
         negator = new DutchActionNegator();
     }
