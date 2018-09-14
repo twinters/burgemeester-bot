@@ -57,40 +57,46 @@ public class ActionGeneratorBuilder {
     }
 
     private Optional<String> getActionRelevantTo(String message) {
-        String searchWords = SentenceUtil.splitOnSpaces(message)
+        System.out.println("Generating for: " + message);
+        List<String> searchWords = SentenceUtil.splitOnSpaces(message)
                 .filter(e -> !TwitterUtil.isTwitterWord(e))
                 .map(SentenceUtil::removePunctuations)
                 .filter(SentenceUtil::hasOnlyLetters)
                 .filter(this::isAllowedWord)
-                .collect(Collectors.joining(" "));
+                .collect(Collectors.toList());
+        System.out.println("Searchable words of message: " + searchWords);
 
         Optional<ActionDescription> actionDescription = Optional.empty();
         try {
-            actionDescription = Picker.pickOptional(actionExtractor.extractAction(searchWords));
+            actionDescription = Picker.pickOptional(actionExtractor.extractAction(searchWords
+                    .stream()
+                    .collect(Collectors.joining(" "))));
         } catch (IOException e) {
             e.printStackTrace();
         }
         if (actionDescription.isPresent()) {
-            searchWords = actionDescription.get().getVerb() + actionDescription.get().getRestOfSentence();
+            searchWords = Arrays.asList(
+                    (actionDescription.get().getVerb() + " " + actionDescription.get().getRestOfSentence()).split(" ")
+            );
 
-            System.out.println("Searching on WikiHow for: " + searchWords);
 
 
             List<PageCard> pages = new ArrayList<>();
             while (pages.isEmpty() && !searchWords.isEmpty()) {
                 try {
-                    pages = wikiHowSearcher.searchAdvanced(Arrays.asList(searchWords.split(" ")));
+                    System.out.println("SEARCHING FOR " + searchWords);
+                    pages = wikiHowSearcher.searchAdvanced(searchWords);
                     if (pages.isEmpty()) {
-                        wikiHowSearcher.search(searchWords);
+                        pages = wikiHowSearcher.search(searchWords);
                     }
                 } catch (HttpStatusException e) {
                     System.out.println("Couldn't find anything for " + searchWords);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-//            if (pages.isEmpty()) {
-//                searchWords = removeShortestWords(searchWords);
-//            }
+                if (pages.isEmpty()) {
+                    searchWords = removeShortestWords(searchWords);
+                }
             }
 
             return getFirstAction(pages);
