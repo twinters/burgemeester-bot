@@ -4,7 +4,7 @@ import be.thomaswinters.action.ActionExtractor;
 import be.thomaswinters.action.data.ActionDescription;
 import be.thomaswinters.generator.generators.IGenerator;
 import be.thomaswinters.newsminer.INewsRetriever;
-import be.thomaswinters.newsminer.data.IArticle;
+import be.thomaswinters.newsminer.data.NewsArticle;
 import be.thomaswinters.newsminer.dutch.VrtNwsRetriever;
 import be.thomaswinters.random.Picker;
 import be.thomaswinters.sentence.SentenceUtil;
@@ -25,7 +25,7 @@ public class NewsActionGenerator implements IGenerator<String> {
     @Override
     public Optional<String> generate() {
         try {
-            Collection<IArticle> articles = newsRetriever.retrieveArticles();
+            Collection<NewsArticle> articles = newsRetriever.retrieveFullArticles();
             Collection<ActionDescription> actions = articles.stream()
                     // Map to first sentence
                     .filter(e->e.getText().trim().length() > 0)
