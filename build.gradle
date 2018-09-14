@@ -11,7 +11,6 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
     compile project(':language-util')
     compile project(':twitter-util')
     compile project(':text-util')
@@ -21,6 +20,7 @@ dependencies {
     compile project(':wiktionary-nl-scraper')
     compile project(':news-scraper')
     compile project(':words')
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.1.0'
 }
 
 heroku {
