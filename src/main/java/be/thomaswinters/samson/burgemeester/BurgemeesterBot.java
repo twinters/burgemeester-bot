@@ -1,14 +1,14 @@
 package be.thomaswinters.samson.burgemeester;
 
-import be.thomaswinters.chatbot.IChatBot;
 import be.thomaswinters.chatbot.data.IChatMessage;
+import be.thomaswinters.generator.generators.GeneratorCombiner;
 import be.thomaswinters.generator.generators.IGenerator;
 import be.thomaswinters.generator.generators.related.IRelatedGenerator;
 import be.thomaswinters.generator.selection.RouletteWheelSelection;
-import be.thomaswinters.language.SubjectType;
 import be.thomaswinters.language.dutch.DutchSentenceSubjectReplacer;
 import be.thomaswinters.language.stringmorpher.Decapitaliser;
 import be.thomaswinters.samson.burgemeester.generators.ActionGeneratorBuilder;
+import be.thomaswinters.samson.burgemeester.generators.NewsActionGenerator;
 import be.thomaswinters.sentence.SentenceUtil;
 import be.thomaswinters.textgeneration.domain.context.ITextGeneratorContext;
 import be.thomaswinters.textgeneration.domain.context.TextGeneratorContext;
@@ -55,14 +55,19 @@ public class BurgemeesterBot implements IRelatedGenerator<String, IChatMessage> 
                     .map(Decapitaliser::decapitaliseFirstLetter)
                     .map(SentenceUtil::removeBetweenBrackets)
                     .map(this::replaceSubject);
+    private final NewsActionGenerator newsActionGenerator = new NewsActionGenerator();
     private final IGenerator<String> randomToespraakGenerator =
             actionGenerator.updateGenerator(
-                    generator -> generator
-                            .filter(10, title -> !SentenceUtil.containsCapitalisedLetters(title))
-                            .filter(title -> !title.startsWith("tips"))
-                            .map(this::createToespraakForAction)
-                            .select(8,
-                                    new RouletteWheelSelection<>(this::getToespraakFitness)));
+                    generator ->
+                            GeneratorCombiner
+                                    .fromGenerators(
+                                            generator
+                                                    .filter(title -> !title.startsWith("tips")),
+                                            newsActionGenerator)
+                                    .filter(10, title -> !SentenceUtil.containsCapitalisedLetters(title))
+                                    .map(this::createToespraakForAction)
+                                    .select(8,
+                                            new RouletteWheelSelection<>(this::getToespraakFitness)));
 
     //region Toespraak Fixer
 
@@ -83,9 +88,7 @@ public class BurgemeesterBot implements IRelatedGenerator<String, IChatMessage> 
      */
     private String replaceSubject(String input) {
         try {
-            return subjectReplacer.replaceSecondPerson(input,
-                    "zij", "hun", "hen", "zichzelf",
-                    SubjectType.THIRD_SINGULAR);
+            return subjectReplacer.secondPersonToThirdPerson(input);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

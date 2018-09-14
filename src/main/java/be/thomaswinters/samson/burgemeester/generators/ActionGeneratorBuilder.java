@@ -56,7 +56,7 @@ public class ActionGeneratorBuilder {
         }
     }
 
-    private Optional<String> getActionRelevantTo(String message)  {
+    private Optional<String> getActionRelevantTo(String message) {
         String searchWords = SentenceUtil.splitOnSpaces(message)
                 .filter(e -> !TwitterUtil.isTwitterWord(e))
                 .map(SentenceUtil::removePunctuations)
@@ -79,7 +79,10 @@ public class ActionGeneratorBuilder {
             List<PageCard> pages = new ArrayList<>();
             while (pages.isEmpty() && !searchWords.isEmpty()) {
                 try {
-                    pages = wikiHowSearcher.search(searchWords);
+                    pages = wikiHowSearcher.searchAdvanced(Arrays.asList(searchWords.split(" ")));
+                    if (pages.isEmpty()) {
+                        wikiHowSearcher.search(searchWords);
+                    }
                 } catch (HttpStatusException e) {
                     System.out.println("Couldn't find anything for " + searchWords);
                 } catch (IOException e) {
