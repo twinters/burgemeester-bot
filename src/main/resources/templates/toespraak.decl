@@ -1,5 +1,5 @@
 u1 = u{2,3}
-u2 = u{1,2}
+u2 = u{1,3}
 
 ahem = Ahe<u1:1>m. Ahe<u1:1><u2>m. Aheum.
 
@@ -12,22 +12,36 @@ toespraak = {
 verleden = (zonet|gisteren|onlangs|vorige week)( nog){.9}
 luistermaar = luister( maar){.6}
 
-toespraakDaarover = {
-	5: Ik heb <verleden>( toevallig){.5} een toespraak over <langstewoord> geschreven
-	1: Ik heb daar <verleden> een toespraak (over|voor) geschreven
+toespraak_reden = {
+	1: voor op het bal van de burgemeesters
+	1: voor toen de minister op bezoek kwam
+	1: voor de afgevaardigde van de minister
+	1: voor @SamsonRobot en @Gert_bot hun (feest|verjaardag)
+	1: voor de balletclub van mevrouw Marlène
+	1: voor mijn modelvliegtuigbouwclub
 }
-gaatAlsVolgt = het gaat als volgt(:|, <luistermaar>:)|<luistermaar>:
 
-toespraakAankondiging = {
-	1: Ik vind dat hier een toespraak past!
+toespraak_daarover = {
+	5: Ik heb <verleden>( toevallig){.5} een toespraak over <langstewoord> geschreven <toespraak_reden>{.5}
+	1: Ik heb daar <verleden> een toespraak (over|voor) geschreven <toespraak_reden>{.5}
+}
+gaat_als_volgt = het gaat als volgt(:|, <luistermaar>:)|<luistermaar>:
+daarover = (over <langstewoord>|daarover)
+
+
+toespraak_aankondiging = {
+	1: VAN LEEM-HUY-ZEN? Waar is mijn toespraak <daarover>? Ah, gevonden!
+	2: Ik gaf onlangs nog een toespraak <daarover> <toespraak_reden>: 
+	2: Willen jullie mijn toespraak hierover horen <toespraak_reden>?
+	2: (Ik vind dat hier een toespraak past!){.5}
 		(Beste leden van de fanfare... (Oh|Oeps), verkeerde toespraak! (A|O)h ja, hier wacht!){.5}
-	2: Dat (vraagt om|verdient) een toespraak(!|:)
-	4: (Dat is toevallig! |Toevallig! |Ah(, toevallig)! ){.6}<toespraakDaarover>(! <gaatAlsVolgt.capitalise>{.4}|, <gaatAlsVolgt>|:|, <luistermaar>{.6}:)
-	2: (Ah! ){.8}Toevallig heb ik nog een toespraak liggen (over <langstewoord>|daarover)! <gaatAlsVolgt.capitalise>
+	3: Dat (vraagt om|verdient) een toespraak(!|:)
+	4: (Dat is toevallig! |Toevallig! |Ah(, toevallig)! ){.6}<toespraak_daarover>(! <gaat_als_volgt.capitalise>{.4}|, <gaat_als_volgt>|:|, <luistermaar>{.6}:)
+	3: (Ah! ){.8}Toevallig heb ik nog een toespraak liggen <daarover>! <gaat_als_volgt.capitalise>
 }
 
 reply = {
-	<toespraakAankondiging>
+	<toespraak_aankondiging>
 	<toespraak>
 }
 
