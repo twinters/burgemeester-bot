@@ -22,19 +22,21 @@ public class NewsActionGenerator implements IGenerator<String> {
     public NewsActionGenerator() throws IOException {
     }
 
+    public static void main(String[] args) throws IOException {
+        new NewsActionGenerator().generate();
+    }
+
     @Override
     public Optional<String> generate() {
         try {
             Collection<NewsArticle> articles = newsRetriever.retrieveFullArticles();
             Collection<ActionDescription> actions = articles.stream()
                     // Map to first sentence
-                    .filter(e->e.getText().trim().length() > 0)
-                    .map(e-> SentenceUtil.splitInSentences(e.getText()).get(0))
+                    .filter(e -> e.getText().trim().length() > 0)
+                    .map(e -> SentenceUtil.splitIntoSentences(e.getText()).get(0))
                     .flatMap(e -> {
                         try {
-                            return actionExtractor.extractAction(
-                                    e
-                            ).stream();
+                            return actionExtractor.extractAction(e).stream();
                         } catch (IOException e1) {
                             throw new RuntimeException(e1);
                         }
@@ -62,9 +64,5 @@ public class NewsActionGenerator implements IGenerator<String> {
                 && !SentenceUtil.getWords(sentence).contains("u")
                 ;
 
-    }
-
-    public static void main(String[] args) throws IOException {
-        new NewsActionGenerator().generate();
     }
 }

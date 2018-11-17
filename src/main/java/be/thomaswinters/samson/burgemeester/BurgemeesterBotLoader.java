@@ -48,10 +48,26 @@ public class BurgemeesterBotLoader {
 
         ITweetsFetcher tweetsToAnswer =
                 TwitterBot.MENTIONS_RETRIEVER.apply(twitter)
+//                        .combineWith(
+//                                new SearchTweetsFetcher(twitter, Arrays.asList("burgemeester", "samson"))
+//                                        .filterRandomlyIf(twitter, x -> true, 1, 3)
+//                        )
                         .combineWith(
-                                new SearchTweetsFetcher(twitter, Arrays.asList("burgemeester", "samson"))
-                                        .filterRandomlyIf(twitter, x -> true, 1, 3)
+                                new AdvancedListTweetsFetcher(twitter, samsonBotsList, false, true)
                         )
+                        // Filter out botfriends tweets randomly
+                        .filterRandomlyIf(twitter, e -> botFriends.contains(e.getUser()), 1, 25)
+                        // Filter out own tweets & retweets
+                        .filterOutRetweets()
+                        .filterOutOwnTweets(twitter);
+
+
+        ITweetsFetcher tweetsToQuoteRetweet =
+                TwitterBot.MENTIONS_RETRIEVER.apply(twitter)
+//                        .combineWith(
+//                                new SearchTweetsFetcher(twitter, Arrays.asList("burgemeester", "samson"))
+//                                        .filterRandomlyIf(twitter, x -> true, 1, 3)
+//                        )
                         .combineWith(
                                 new AdvancedListTweetsFetcher(twitter, samsonBotsList, false, true)
                         )

@@ -34,7 +34,7 @@ toespraak_aankondiging = {
 	2: Ik gaf onlangs nog een toespraak <daarover> <toespraak_reden>: 
 	2: Willen jullie mijn toespraak hierover horen <toespraak_reden>?
 	2: (Ik vind dat hier een toespraak past!){.5}
-		(Beste leden van de fanfare... (Oh|Oeps), verkeerde toespraak! (A|O)h ja, hier wacht!){.5}
+		(Beste leden van de (fanfare|balletclub|burgemeestersclub|modelvliegtuigjesclub)... (Oh|Oeps), verkeerde toespraak! (A|O)h ja, hier wacht!){.5}
 	3: Dat (vraagt om|verdient) een toespraak(!|:)
 	4: (Dat is toevallig! |Toevallig! |Ah(, toevallig)! ){.6}<toespraak_daarover>(! <gaat_als_volgt.capitalise>{.4}|, <gaat_als_volgt>|:|, <luistermaar>{.6}:)
 	3: (Ah! ){.8}Toevallig heb ik nog een toespraak liggen <daarover>! <gaat_als_volgt.capitalise>

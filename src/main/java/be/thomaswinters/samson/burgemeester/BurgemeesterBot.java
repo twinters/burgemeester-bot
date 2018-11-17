@@ -132,12 +132,14 @@ public class BurgemeesterBot implements IRelatedGenerator<String, IChatMessage> 
         return optionalAction.map(action -> {
                     ITextGeneratorContext register = createGenerationContext(action);
 
+                    System.out.println("Adding longest word");
                     SentenceUtil.splitOnSpaces(finalText)
                             .filter(e -> !TwitterUtil.isTwitterWord(e))
                             .filter(e -> samsonBotWords.stream().noneMatch(e::matches))
                             .map(SentenceUtil::removeNonLetters)
                             .max(Comparator.comparingInt(String::length))
                             .ifPresent(longWord -> register.createGenerator("langstewoord", longWord));
+                    System.out.println("Generating using template");
                     return toespraakTemplatedGenerator.generate("reply", register);
                 }
         );
