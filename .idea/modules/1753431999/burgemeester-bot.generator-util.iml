@@ -5,7 +5,6 @@
     <content url="file://$MODULE_DIR$/../../../../generator-util">
       <excludeFolder url="file://$MODULE_DIR$/../../../../generator-util/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../../generator-util/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../../../../generator-util/out" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

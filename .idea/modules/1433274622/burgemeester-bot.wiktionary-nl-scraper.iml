@@ -5,7 +5,6 @@
     <content url="file://$MODULE_DIR$/../../../../wiktionary-nl-scraper">
       <excludeFolder url="file://$MODULE_DIR$/../../../../wiktionary-nl-scraper/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../../wiktionary-nl-scraper/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../../../../wiktionary-nl-scraper/out" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

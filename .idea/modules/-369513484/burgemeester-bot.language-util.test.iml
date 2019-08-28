@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.system.module.type="sourceSet" type="JAVA_MODULE" version="4">
+<module external.linked.project.id=":language-util:test" external.linked.project.path="$MODULE_DIR$/../../../../language-util" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="be.thomaswinters" external.system.module.type="sourceSet" external.system.module.version="0.0.1-SNAPSHOT" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_9">
-    <output-test url="file://$MODULE_DIR$/../../../../language-util/out/test/classes" />
+    <output-test url="file://$MODULE_DIR$/../../../../language-util/build/classes/java/test" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../../language-util/src/test">
       <sourceFolder url="file://$MODULE_DIR$/../../../../language-util/src/test/java" isTestSource="true" />
@@ -9,8 +9,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="language-util_main" />
-    <orderEntry type="module" module-name="text-util_main" />
+    <orderEntry type="module" module-name="burgemeester-bot.language-util.main" />
+    <orderEntry type="module" module-name="burgemeester-bot.text-util.main" />
     <orderEntry type="library" name="Gradle: org.junit.jupiter:junit-jupiter-api:5.3.1" level="project" />
     <orderEntry type="library" name="Gradle: org.languagetool:language-nl:4.1" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.commons:commons-csv:1.5" level="project" />
@@ -50,5 +50,5 @@
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.9.4" level="project" />
     <orderEntry type="library" name="Gradle: ch.qos.logback:logback-core:1.2.3" level="project" />
   </component>
-  <component name="TestModuleProperties" production-module="language-util_main" />
+  <component name="TestModuleProperties" production-module="burgemeester-bot.language-util.main" />
 </module>
