@@ -5,7 +5,6 @@
     <content url="file://$MODULE_DIR$/../../../../twitter-util">
       <excludeFolder url="file://$MODULE_DIR$/../../../../twitter-util/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../../twitter-util/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../../../../twitter-util/out" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

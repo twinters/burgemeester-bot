@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.system.module.type="sourceSet" type="JAVA_MODULE" version="4">
+<module external.linked.project.id="burgemeester-bot:main" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="GRADLE" external.system.module.group="" external.system.module.type="sourceSet" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_9">
-    <output-test url="file://$MODULE_DIR$/../../out/test/classes" />
+    <output url="file://$MODULE_DIR$/../../build/classes/java/main" />
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../../src/test">
-      <sourceFolder url="file://$MODULE_DIR$/../../src/test/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/../../src/test/resources" type="java-test-resource" />
+    <content url="file://$MODULE_DIR$/../../src/main">
+      <sourceFolder url="file://$MODULE_DIR$/../../src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/main/resources" type="java-resource" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="burgemeester-bot_main" />
-    <orderEntry type="module" module-name="language-util_main" />
-    <orderEntry type="module" module-name="twitter-util_main" />
-    <orderEntry type="module" module-name="chatbot-util_main" />
-    <orderEntry type="module" module-name="words_main" />
-    <orderEntry type="module" module-name="text-util_main" />
-    <orderEntry type="module" module-name="generator-util_main" />
-    <orderEntry type="module" module-name="wikihow-scraper_main" />
-    <orderEntry type="module" module-name="wiktionary-nl-scraper_main" />
-    <orderEntry type="module" module-name="news-scraper_main" />
+    <orderEntry type="module" module-name="burgemeester-bot.language-util.main" />
+    <orderEntry type="module" module-name="burgemeester-bot.twitter-util.main" />
+    <orderEntry type="module" module-name="burgemeester-bot.chatbot-util.main" />
+    <orderEntry type="module" module-name="burgemeester-bot.words.main" />
+    <orderEntry type="module" module-name="burgemeester-bot.text-util.main" />
+    <orderEntry type="module" module-name="burgemeester-bot.generator-util.main" />
+    <orderEntry type="module" module-name="burgemeester-bot.wikihow-scraper.main" />
+    <orderEntry type="module" module-name="burgemeester-bot.wiktionary-nl-scraper.main" />
+    <orderEntry type="module" module-name="burgemeester-bot.news-scraper.main" />
     <orderEntry type="library" name="Gradle: org.junit.jupiter:junit-jupiter-api:5.3.1" level="project" />
     <orderEntry type="library" name="Gradle: org.languagetool:language-nl:4.1" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.commons:commons-csv:1.5" level="project" />
@@ -83,5 +82,4 @@
     <orderEntry type="library" name="Gradle: net.arnx:jsonic:1.2.11" level="project" />
     <orderEntry type="library" name="Gradle: ch.qos.logback:logback-core:1.2.3" level="project" />
   </component>
-  <component name="TestModuleProperties" production-module="burgemeester-bot_main" />
 </module>
