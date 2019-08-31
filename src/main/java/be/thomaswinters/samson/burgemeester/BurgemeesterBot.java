@@ -47,8 +47,14 @@ public class BurgemeesterBot implements IRelatedGenerator<String, IChatMessage> 
             "de",
             "albert",
             "alberto",
+            "AL-BER-TOO",
+            "AL-BER-TOOO",
+            "AL-BER-TOOOO",
+            "AL-BER-TOOOOO",
+            "AL-BER-TOOOOOO",
             "AL-BER-TOOOOOOO"
     );
+
     private final IRelatedGenerator<String, String> actionGenerator =
             new ActionGeneratorBuilder("nl", replyWordBlackListWords)
                     .buildGenerator()
@@ -144,4 +150,8 @@ public class BurgemeesterBot implements IRelatedGenerator<String, IChatMessage> 
                 }
         );
     }
+    protected IRelatedGenerator<String, String> getActionGenerator() {
+        return actionGenerator;
+    }
+
 }
