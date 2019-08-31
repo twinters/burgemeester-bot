@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$/../../../../text-util">
       <excludeFolder url="file://$MODULE_DIR$/../../../../text-util/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../../text-util/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../text-util/out" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

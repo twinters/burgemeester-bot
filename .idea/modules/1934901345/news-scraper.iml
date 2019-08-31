@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$/../../../../news-scraper">
       <excludeFolder url="file://$MODULE_DIR$/../../../../news-scraper/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../../news-scraper/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../news-scraper/out" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

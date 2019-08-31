@@ -3,35 +3,35 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/burgemeester-bot.iml" filepath="$PROJECT_DIR$/.idea/modules/burgemeester-bot.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2135214749/burgemeester-bot.chatbot-util.iml" filepath="$PROJECT_DIR$/.idea/modules/-2135214749/burgemeester-bot.chatbot-util.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2135214749/burgemeester-bot.chatbot-util.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-2135214749/burgemeester-bot.chatbot-util.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2135214749/burgemeester-bot.chatbot-util.test.iml" filepath="$PROJECT_DIR$/.idea/modules/-2135214749/burgemeester-bot.chatbot-util.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1753431999/burgemeester-bot.generator-util.iml" filepath="$PROJECT_DIR$/.idea/modules/1753431999/burgemeester-bot.generator-util.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1753431999/burgemeester-bot.generator-util.main.iml" filepath="$PROJECT_DIR$/.idea/modules/1753431999/burgemeester-bot.generator-util.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1753431999/burgemeester-bot.generator-util.test.iml" filepath="$PROJECT_DIR$/.idea/modules/1753431999/burgemeester-bot.generator-util.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-369513484/burgemeester-bot.language-util.iml" filepath="$PROJECT_DIR$/.idea/modules/-369513484/burgemeester-bot.language-util.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-369513484/burgemeester-bot.language-util.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-369513484/burgemeester-bot.language-util.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-369513484/burgemeester-bot.language-util.test.iml" filepath="$PROJECT_DIR$/.idea/modules/-369513484/burgemeester-bot.language-util.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/burgemeester-bot.main.iml" filepath="$PROJECT_DIR$/.idea/modules/burgemeester-bot.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1183452921/burgemeester-bot.news-scraper.iml" filepath="$PROJECT_DIR$/.idea/modules/-1183452921/burgemeester-bot.news-scraper.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1183452921/burgemeester-bot.news-scraper.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-1183452921/burgemeester-bot.news-scraper.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1183452921/burgemeester-bot.news-scraper.test.iml" filepath="$PROJECT_DIR$/.idea/modules/-1183452921/burgemeester-bot.news-scraper.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/burgemeester-bot.test.iml" filepath="$PROJECT_DIR$/.idea/modules/burgemeester-bot.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-163926593/burgemeester-bot.text-util.iml" filepath="$PROJECT_DIR$/.idea/modules/-163926593/burgemeester-bot.text-util.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-163926593/burgemeester-bot.text-util.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-163926593/burgemeester-bot.text-util.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-163926593/burgemeester-bot.text-util.test.iml" filepath="$PROJECT_DIR$/.idea/modules/-163926593/burgemeester-bot.text-util.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1733928737/burgemeester-bot.twitter-util.iml" filepath="$PROJECT_DIR$/.idea/modules/-1733928737/burgemeester-bot.twitter-util.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1733928737/burgemeester-bot.twitter-util.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-1733928737/burgemeester-bot.twitter-util.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1733928737/burgemeester-bot.twitter-util.test.iml" filepath="$PROJECT_DIR$/.idea/modules/-1733928737/burgemeester-bot.twitter-util.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/821956974/burgemeester-bot.wikihow-scraper.iml" filepath="$PROJECT_DIR$/.idea/modules/821956974/burgemeester-bot.wikihow-scraper.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/821956974/burgemeester-bot.wikihow-scraper.main.iml" filepath="$PROJECT_DIR$/.idea/modules/821956974/burgemeester-bot.wikihow-scraper.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/821956974/burgemeester-bot.wikihow-scraper.test.iml" filepath="$PROJECT_DIR$/.idea/modules/821956974/burgemeester-bot.wikihow-scraper.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1433274622/burgemeester-bot.wiktionary-nl-scraper.iml" filepath="$PROJECT_DIR$/.idea/modules/1433274622/burgemeester-bot.wiktionary-nl-scraper.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1433274622/burgemeester-bot.wiktionary-nl-scraper.main.iml" filepath="$PROJECT_DIR$/.idea/modules/1433274622/burgemeester-bot.wiktionary-nl-scraper.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1433274622/burgemeester-bot.wiktionary-nl-scraper.test.iml" filepath="$PROJECT_DIR$/.idea/modules/1433274622/burgemeester-bot.wiktionary-nl-scraper.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1266098618/burgemeester-bot.words.iml" filepath="$PROJECT_DIR$/.idea/modules/-1266098618/burgemeester-bot.words.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1266098618/burgemeester-bot.words.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-1266098618/burgemeester-bot.words.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1266098618/burgemeester-bot.words.test.iml" filepath="$PROJECT_DIR$/.idea/modules/-1266098618/burgemeester-bot.words.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/burgemeester-bot_main.iml" filepath="$PROJECT_DIR$/.idea/modules/burgemeester-bot_main.iml" group="burgemeester-bot" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/burgemeester-bot_test.iml" filepath="$PROJECT_DIR$/.idea/modules/burgemeester-bot_test.iml" group="burgemeester-bot" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/983139517/chatbot-util.iml" filepath="$PROJECT_DIR$/.idea/modules/983139517/chatbot-util.iml" group="chatbot-util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/983139517/chatbot-util_main.iml" filepath="$PROJECT_DIR$/.idea/modules/983139517/chatbot-util_main.iml" group="chatbot-util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/983139517/chatbot-util_test.iml" filepath="$PROJECT_DIR$/.idea/modules/983139517/chatbot-util_test.iml" group="chatbot-util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/604709017/generator-util.iml" filepath="$PROJECT_DIR$/.idea/modules/604709017/generator-util.iml" group="generator-util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/604709017/generator-util_main.iml" filepath="$PROJECT_DIR$/.idea/modules/604709017/generator-util_main.iml" group="generator-util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/604709017/generator-util_test.iml" filepath="$PROJECT_DIR$/.idea/modules/604709017/generator-util_test.iml" group="generator-util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1810188250/language-util.iml" filepath="$PROJECT_DIR$/.idea/modules/1810188250/language-util.iml" group="language-util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1810188250/language-util_main.iml" filepath="$PROJECT_DIR$/.idea/modules/1810188250/language-util_main.iml" group="language-util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1810188250/language-util_test.iml" filepath="$PROJECT_DIR$/.idea/modules/1810188250/language-util_test.iml" group="language-util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1934901345/news-scraper.iml" filepath="$PROJECT_DIR$/.idea/modules/1934901345/news-scraper.iml" group="news-scraper" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1934901345/news-scraper_main.iml" filepath="$PROJECT_DIR$/.idea/modules/1934901345/news-scraper_main.iml" group="news-scraper" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1934901345/news-scraper_test.iml" filepath="$PROJECT_DIR$/.idea/modules/1934901345/news-scraper_test.iml" group="news-scraper" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-60019547/text-util.iml" filepath="$PROJECT_DIR$/.idea/modules/-60019547/text-util.iml" group="text-util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-60019547/text-util_main.iml" filepath="$PROJECT_DIR$/.idea/modules/-60019547/text-util_main.iml" group="text-util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-60019547/text-util_test.iml" filepath="$PROJECT_DIR$/.idea/modules/-60019547/text-util_test.iml" group="text-util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1384425529/twitter-util.iml" filepath="$PROJECT_DIR$/.idea/modules/1384425529/twitter-util.iml" group="twitter-util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1384425529/twitter-util_main.iml" filepath="$PROJECT_DIR$/.idea/modules/1384425529/twitter-util_main.iml" group="twitter-util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1384425529/twitter-util_test.iml" filepath="$PROJECT_DIR$/.idea/modules/1384425529/twitter-util_test.iml" group="twitter-util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-428717100/wikihow-scraper.iml" filepath="$PROJECT_DIR$/.idea/modules/-428717100/wikihow-scraper.iml" group="wikihow-scraper" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-428717100/wikihow-scraper_main.iml" filepath="$PROJECT_DIR$/.idea/modules/-428717100/wikihow-scraper_main.iml" group="wikihow-scraper" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-428717100/wikihow-scraper_test.iml" filepath="$PROJECT_DIR$/.idea/modules/-428717100/wikihow-scraper_test.iml" group="wikihow-scraper" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper.iml" filepath="$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper.iml" group="wiktionary-nl-scraper" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper_main.iml" filepath="$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper_main.iml" group="wiktionary-nl-scraper" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper_test.iml" filepath="$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper_test.iml" group="wiktionary-nl-scraper" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1150697428/words.iml" filepath="$PROJECT_DIR$/.idea/modules/-1150697428/words.iml" group="words" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1150697428/words_main.iml" filepath="$PROJECT_DIR$/.idea/modules/-1150697428/words_main.iml" group="words" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1150697428/words_test.iml" filepath="$PROJECT_DIR$/.idea/modules/-1150697428/words_test.iml" group="words" />
     </modules>
   </component>
 </project>

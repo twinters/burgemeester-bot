@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$/../../../../wikihow-scraper">
       <excludeFolder url="file://$MODULE_DIR$/../../../../wikihow-scraper/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../../wikihow-scraper/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../wikihow-scraper/out" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
