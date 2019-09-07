@@ -13,7 +13,7 @@
     <orderEntry type="module" module-name="language-util_main" />
     <orderEntry type="module" module-name="twitter-util_main" />
     <orderEntry type="module" module-name="chatbot-util_main" />
-    <orderEntry type="module" module-name="words_main" />
+    <orderEntry type="module" module-name="babbly_main" />
     <orderEntry type="module" module-name="text-util_main" />
     <orderEntry type="module" module-name="generator-util_main" />
     <orderEntry type="module" module-name="wikihow-scraper_main" />

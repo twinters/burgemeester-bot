@@ -8,8 +8,8 @@ include ':generator-util'
 project(':generator-util').projectDir = new File(settingsDir, '../generator-util')
 include ':chatbot-util'
 project(':chatbot-util').projectDir = new File(settingsDir, '../chatbot-util')
-include ':words'
-project(':words').projectDir = new File(settingsDir, '../words')
+include ':babbly'
+project(':babbly').projectDir = new File(settingsDir, '../babbly')
 include ':wikihow-scraper'
 project(':wikihow-scraper').projectDir = new File(settingsDir, '../wikihow-scraper')
 include ':wiktionary-nl-scraper'

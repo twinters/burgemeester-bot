@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1926502039/babbly.iml" filepath="$PROJECT_DIR$/.idea/modules/-1926502039/babbly.iml" group="babbly" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1926502039/babbly_main.iml" filepath="$PROJECT_DIR$/.idea/modules/-1926502039/babbly_main.iml" group="babbly" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1926502039/babbly_test.iml" filepath="$PROJECT_DIR$/.idea/modules/-1926502039/babbly_test.iml" group="babbly" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/burgemeester-bot.iml" filepath="$PROJECT_DIR$/.idea/modules/burgemeester-bot.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/burgemeester-bot_main.iml" filepath="$PROJECT_DIR$/.idea/modules/burgemeester-bot_main.iml" group="burgemeester-bot" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/burgemeester-bot_test.iml" filepath="$PROJECT_DIR$/.idea/modules/burgemeester-bot_test.iml" group="burgemeester-bot" />
@@ -29,9 +32,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper.iml" filepath="$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper.iml" group="wiktionary-nl-scraper" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper_main.iml" filepath="$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper_main.iml" group="wiktionary-nl-scraper" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper_test.iml" filepath="$PROJECT_DIR$/.idea/modules/1628069604/wiktionary-nl-scraper_test.iml" group="wiktionary-nl-scraper" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1150697428/words.iml" filepath="$PROJECT_DIR$/.idea/modules/-1150697428/words.iml" group="words" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1150697428/words_main.iml" filepath="$PROJECT_DIR$/.idea/modules/-1150697428/words_main.iml" group="words" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1150697428/words_test.iml" filepath="$PROJECT_DIR$/.idea/modules/-1150697428/words_test.iml" group="words" />
     </modules>
   </component>
 </project>

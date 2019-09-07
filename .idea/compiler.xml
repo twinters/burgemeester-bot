@@ -2,6 +2,8 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="babbly_main" target="1.9" />
+      <module name="babbly_test" target="1.9" />
       <module name="burgemeester-bot.chatbot-util.main" target="1.9" />
       <module name="burgemeester-bot.chatbot-util.test" target="1.9" />
       <module name="burgemeester-bot.generator-util.main" target="1.9" />
